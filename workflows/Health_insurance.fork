@@ -1,0 +1,1445 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-27T18:13:52.222Z",
+    "modified_at": "2026-07-27T18:13:52.222Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "qpg34ilv8",
+      "node_id": "node-accept-health-profile-30631b79",
+      "version_tag": "v1",
+      "title": "Accept Health Profile",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": {
+                        "text": "Converts health insurance eligibility inputs into a pipe‑delimited profile string with boolean normalization.\n\nThis node maps raw user inputs from a health insurance eligibility screen into a standardized pipe‑separated string. It takes nine parameters: age, marital status, family planning intention, chronic condition presence, travel frequency, minimum sum insured, and three boolean preferences (maternity, OPD, and wellness coverage). The node converts the boolean‑like strings (“true”/“false”) into actual Python booleans, with smart defaults: if the maternity preference is not explicitly provided, it defaults to the family planning intention; OPD and wellness default to false. It then assembles a consistent string following the format Age: <value> | MaritalStatus: <value> | .... This clean, parseable output enables downstream nodes to reliably extract user attributes for policy filtering and scoring.",
+                        "lineHeight": 14,
+                        "fontSize": 11,
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                      },
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-accept-health-profile-30631b79",
+        "name": "Accept Health Profile",
+        "description": "Converts health insurance eligibility inputs into a pipe‑delimited profile string with boolean normalization.\n\nThis node maps raw user inputs from a health insurance eligibility screen into a standardized pipe‑separated string. It takes nine parameters: age, marital status, family planning intention, chronic condition presence, travel frequency, minimum sum insured, and three boolean preferences (maternity, OPD, and wellness coverage). The node converts the boolean‑like strings (“true”/“false”) into actual Python booleans, with smart defaults: if the maternity preference is not explicitly provided, it defaults to the family planning intention; OPD and wellness default to false. It then assembles a consistent string following the format Age: <value> | MaritalStatus: <value> | .... This clean, parseable output enables downstream nodes to reliably extract user attributes for policy filtering and scoring.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 14:57:14.328765"
+      },
+      "constraints": [],
+      "position": {
+        "x": 772.2709258023152,
+        "y": 97.69414264565367,
+        "width": 320,
+        "height": 629,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "age",
+            "type": [
+              "integer"
+            ],
+            "value": 30,
+            "modelMetadata": null,
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "marital_status",
+            "type": [
+              "string"
+            ],
+            "value": "married",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "single",
+              "married"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "planning_family",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "chronic_condition",
+            "type": [
+              "string"
+            ],
+            "value": "false",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "travel_frequency",
+            "type": [
+              "string"
+            ],
+            "value": "monthly",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "rarely",
+              "monthly",
+              "weekly"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "sum_insured_min",
+            "type": [
+              "string"
+            ],
+            "value": "30L",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "5L",
+              "10L",
+              "20L",
+              "30L",
+              "50L",
+              "1Cr"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "want_maternity",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 7,
+            "name": "want_opd",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 8,
+            "name": "want_wellness",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "profile",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "9w6hle67k",
+      "node_id": "node-health-profile-shortlist-f2061803",
+      "version_tag": "v1",
+      "title": "Health Profile Shortlist",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": {
+                        "text": "Retrieves policy excerpts from a vector database and builds a prompt for LLM to rank top 5 health plans.\n\nThis node creates a prompt for an LLM to shortlist the five best health insurance policies for a user. It first parses the user profile string to extract key attributes (sum insured, chronic condition, maternity, wellness, OPD) and constructs a retrieval query that combines these terms with “health insurance policy” and “policy wording benefits”. The node queries the insurance vector database with top_k=30 to obtain relevant policy excerpts, then inserts these together with the user profile and a scorecard (containing rubrics, weights, and hard filters) into a structured prompt. The LLM is instructed to apply hard filters, compute seven criterion scores (0‑10) for each policy, apply profile‑adaptive weights, drop ineligible policies, and output exactly the top five in a strict TOP_5_READY format. This ensures a data‑driven, transparent shortlist based on both user needs and policy attributes.",
+                        "lineHeight": 14,
+                        "fontSize": 11,
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                      },
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-health-profile-shortlist-f2061803",
+        "name": "Health Profile Shortlist",
+        "description": "Retrieves policy excerpts from a vector database and builds a prompt for LLM to rank top 5 health plans.\n\nThis node creates a prompt for an LLM to shortlist the five best health insurance policies for a user. It first parses the user profile string to extract key attributes (sum insured, chronic condition, maternity, wellness, OPD) and constructs a retrieval query that combines these terms with “health insurance policy” and “policy wording benefits”. The node queries the insurance vector database with top_k=30 to obtain relevant policy excerpts, then inserts these together with the user profile and a scorecard (containing rubrics, weights, and hard filters) into a structured prompt. The LLM is instructed to apply hard filters, compute seven criterion scores (0‑10) for each policy, apply profile‑adaptive weights, drop ineligible policies, and output exactly the top five in a strict TOP_5_READY format. This ensures a data‑driven, transparent shortlist based on both user needs and policy attributes.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:00:35.489574"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1148.2733058085175,
+        "y": 98.50700539251392,
+        "width": 320,
+        "height": 329,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "scorecard_data",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "insurance_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "g5szeuuv1",
+      "node_id": "node-accept-health-lifestyle-15cba6c6",
+      "version_tag": "v1",
+      "title": "Accept Health Lifestyle",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": {
+                        "text": "Normalizes user lifestyle and importance ratings for health insurance criteria into a pipe‑delimited string.\n\nThis node transforms user preferences from a second health insurance screen into a standardized lifestyle string. It accepts eight inputs: room preference, city tier, smoking status, annual budget, existing policy, and importance ratings (low/medium/high) for seven criteria: chronic coverage, senior‑friendliness, maternity, cashless convenience, preventive benefits, claim approval rate, and hospital network size. The node concatenates these values into a pipe‑separated format with labels like RoomPref, Zone, Smoker, Budget, ExistingPolicy, and importance fields (ImpChronic, ImpSenior, etc.). This structured output allows downstream recommendation engines to incorporate the user’s stated priorities — for example, giving extra weight to chronic coverage if rated “high” — and to tailor final recommendations accordingly.",
+                        "lineHeight": 14,
+                        "fontSize": 11,
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                      },
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-accept-health-lifestyle-15cba6c6",
+        "name": "Accept Health Lifestyle",
+        "description": "Normalizes user lifestyle and importance ratings for health insurance criteria into a pipe‑delimited string.\n\nThis node transforms user preferences from a second health insurance screen into a standardized lifestyle string. It accepts eight inputs: room preference, city tier, smoking status, annual budget, existing policy, and importance ratings (low/medium/high) for seven criteria: chronic coverage, senior‑friendliness, maternity, cashless convenience, preventive benefits, claim approval rate, and hospital network size. The node concatenates these values into a pipe‑separated format with labels like RoomPref, Zone, Smoker, Budget, ExistingPolicy, and importance fields (ImpChronic, ImpSenior, etc.). This structured output allows downstream recommendation engines to incorporate the user’s stated priorities — for example, giving extra weight to chronic coverage if rated “high” — and to tailor final recommendations accordingly.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:05:39.912349"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1146.138639117839,
+        "y": 464.8841860965286,
+        "width": 320,
+        "height": 779,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "room_pref",
+            "type": [
+              "string"
+            ],
+            "value": "single_private",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "any_room",
+              "single_private",
+              "shared",
+              "general_ward"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "city_tier",
+            "type": [
+              "string"
+            ],
+            "value": "Tier II",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Tier I",
+              "Tier II",
+              "Tier III"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "smoker",
+            "type": [
+              "string"
+            ],
+            "value": "false",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "budget_annual",
+            "type": [
+              "string"
+            ],
+            "value": "15000/year - 25000/year",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "< 15000/year",
+              "15000/year - 25000/year",
+              "25000/year - 50000/year",
+              "> 50000/year"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "existing_policy",
+            "type": [
+              "string"
+            ],
+            "value": "None",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "importance_chronic",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "importance_senior",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 7,
+            "name": "importance_maternity",
+            "type": [
+              "string"
+            ],
+            "value": "high",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 8,
+            "name": "importance_cashless",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 9,
+            "name": "importance_preventive",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 10,
+            "name": "importance_approval_rate",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 11,
+            "name": "importance_hospital_network",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "lifestyle",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "v7k07apzd",
+      "node_id": "node-health-insurance-recommendation-3ae5d900",
+      "version_tag": "v1",
+      "title": "Health Insurance Recommendation",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": {
+                        "text": "Retrieves full policy wordings for top 3 shortlisted plans and builds a detailed final recommendation prompt.\n\nThis node prepares a comprehensive prompt for an LLM to produce the single best health insurance recommendation from a shortlist. It first parses the shortlisted policies (from the previous LLM output) to extract the names of the top three plans. For each of these, it queries the insurance vector database to retrieve detailed policy wordings, benefits, and exclusions (up to 15 chunks per policy), and concatenates them into a rich context block. The node then builds an elaborate prompt that includes the full user profile, lifestyle preferences, the shortlisted plans, the retrieved policy documents, and the scorecard data (rubrics and weights). The LLM is instructed to re‑evaluate eligibility, compute weighted scores using profile‑adaptive weights, consider the user’s expressed importance ratings, and perform a comparative analysis of the three plans. It must then select the best plan, justify with three data‑backed reasons, highlight trade‑offs, and suggest an alternative. The output follows a strict format (BEST_PLAN, WHY THIS PLAN, TRADE-OFFS, ALTERNATIVE) with no extra text, ensuring a clear, actionable recommendation.",
+                        "lineHeight": 14,
+                        "fontSize": 11,
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                      },
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-health-insurance-recommendation-3ae5d900",
+        "name": "Health Insurance Recommendation",
+        "description": "Retrieves full policy wordings for top 3 shortlisted plans and builds a detailed final recommendation prompt.\n\nThis node prepares a comprehensive prompt for an LLM to produce the single best health insurance recommendation from a shortlist. It first parses the shortlisted policies (from the previous LLM output) to extract the names of the top three plans. For each of these, it queries the insurance vector database to retrieve detailed policy wordings, benefits, and exclusions (up to 15 chunks per policy), and concatenates them into a rich context block. The node then builds an elaborate prompt that includes the full user profile, lifestyle preferences, the shortlisted plans, the retrieved policy documents, and the scorecard data (rubrics and weights). The LLM is instructed to re‑evaluate eligibility, compute weighted scores using profile‑adaptive weights, consider the user’s expressed importance ratings, and perform a comparative analysis of the three plans. It must then select the best plan, justify with three data‑backed reasons, highlight trade‑offs, and suggest an alternative. The output follows a strict format (BEST_PLAN, WHY THIS PLAN, TRADE-OFFS, ALTERNATIVE) with no extra text, ensuring a clear, actionable recommendation.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:07:34.841145"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1507.5949121217748,
+        "y": 496.79785269113324,
+        "width": 320,
+        "height": 429,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_lifestyle",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "shortlisted_policies",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "insurance_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "scorecard_data",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "qbpsh4b59",
+      "node_id": "node-text-generate-(gemma)-0d5bdde2",
+      "version_tag": "v1",
+      "title": "Text Generate (Gemma)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-text-generate-(gemma)-0d5bdde2",
+        "name": "Text Generate (Gemma)",
+        "description": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+        "category": "llm_gemma",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-30 13:59:40.668862"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1511.3253004869628,
+        "y": 953.6731648084689,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "gemma::model_weights"
+            ],
+            "value": "gemma-4-E4B-it",
+            "modelMetadata": {
+              "displayName": "gemma-4-E4B-it",
+              "id": 64
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "You are a helpful assistant.",
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "enable_thinking",
+            "type": [
+              "boolean"
+            ],
+            "value": false,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 1,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.95,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 7,
+            "name": "top_k",
+            "type": [
+              "integer"
+            ],
+            "value": 64,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 8,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xeqcfaldb",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1509.2497307180422,
+        "y": 86.6369915234139,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.3-70B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.3-70B-Instruct",
+              "id": 43
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "su27tsfvu",
+      "source": {
+        "node_id": "qpg34ilv8",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "9w6hle67k",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "89f648uw1",
+      "source": {
+        "node_id": "2e82740e-17d4-4212-a3e2-c3e41d7d42c9",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "9w6hle67k",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "sxr4u336k",
+      "source": {
+        "node_id": "2e82740e-17d4-4212-a3e2-c3e41d7d42c9",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "v7k07apzd",
+        "port_index": 4,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "v7ww7f74a",
+      "source": {
+        "node_id": "g5szeuuv1",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "v7k07apzd",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "trnii8fbf",
+      "source": {
+        "node_id": "qpg34ilv8",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "v7k07apzd",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "ri50cmgr6",
+      "source": {
+        "node_id": "v7k07apzd",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "qbpsh4b59",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "j9lvfy153",
+      "source": {
+        "node_id": "adab835a-3565-44fa-885c-91703b6b7581",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "9w6hle67k",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "5px50o5bx",
+      "source": {
+        "node_id": "adab835a-3565-44fa-885c-91703b6b7581",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "v7k07apzd",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "ao4y5lmdc",
+      "source": {
+        "node_id": "9w6hle67k",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "xeqcfaldb",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "1mrbxj7fs",
+      "source": {
+        "node_id": "xeqcfaldb",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "v7k07apzd",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "84wy34fy3",
+      "node_id": "qbpsh4b59",
+      "port_name": "output",
+      "position": {
+        "x": 1878.1395195334635,
+        "y": 358.95023794050195,
+        "width": 866.4256164351941,
+        "height": 955.5952195772161,
+        "isCollapsed": false,
+        "expandedHeight": 955.5952195772161,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "tjxqaz8jw",
+      "node_id": "xeqcfaldb",
+      "port_name": "output",
+      "position": {
+        "x": 1881.7194656954985,
+        "y": 69.26293033047143,
+        "width": 653.3967200295542,
+        "height": 252.04352588878373,
+        "isCollapsed": false,
+        "expandedHeight": 252.04352588878373,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "2e82740e-17d4-4212-a3e2-c3e41d7d42c9",
+      "name": "health_insurance_scorecard",
+      "resourceType": "variable",
+      "description": "",
+      "components": {
+        "bbdca5a7": {
+          "type": "string",
+          "value": "# HEALTH INSURANCE SCORECARD - v1.0  ## RUBRICS (0-10 per criterion)  ### 1. Chronic / PED coverage Base from PED waiting months:   0       → 10   1-12    → 7   13-24   → 5   25-36   → 3   37-48   → 2   >48     → 1 Bonuses:   +3 if chronic_day1 == Y   +1 if opd_chronic == Y   +1 if specific_disease_waiting_months <= 12 Cap at 10.  ### 2. Senior citizen suitability Age band (max entry age):   >=80   → 4   70-79  → 3   65-69  → 2   <65    → 0 +2 if lifelong_renewal == Y Co-pay senior pct: 0%→4, 10%→3, 20%→2, 30%→1, >30%→0 Sublimits: none→+2, some→+1, many→0 Cap at 10.  ### 3. Maternity cover Waiting months:   no_maternity → 0   <=12         → 4   13-24        → 3   25-36        → 2   37-48        → 1 Normal + C-section sum (% of SI): >5%→3, 2-5%→2, <2%→1 +2 if newborn_day1 == Y +1 if vaccination_cover == Y Cap at 10.  ### 4. Cashless network (network density + insurer settlement) Network score (hospitals):   >15k →5, 10–15k→4, 5–10k→3, 2–5k→2, <2k→1 Settlement bonus (CSR by count):   ≥99%→3, 95–99%→2, 90–95%→1, <90%→0 +2 if direct_inhouse_claims == Y Cap at 10.  ### 5. Preventive care annual_checkup==Y → +3 wellness_rewards==Y → +2 telemedicine==Y → +1 opd_general==Y → +2 pre_hosp_days ≥60 → +1 post_hosp_days ≥180 → +1 Cap at 10.  ### 6. Approval rate (Claim Settlement Ratio by count) CSR mapping:   ≥99% →10, 97–99%→9, 95–97%→8, 92–95%→7, 90–92%→6,   85–90%→5, 80–85%→4, 75–80%→3, <75%→2  ### 7. Hospital network size (hospitals count) >20,000 →10, 15–20k→9, 10–15k→8, 7–10k→6, 5–7k→5, 3–5k→4, 1–3k→3, <1k→2  ## WEIGHTS (base + user‑adaptive) Weights sum to 100. Use the table below.  Criterion                | Base | Senior60+ | YoungFamily | ChronicPatient | FrequentTraveler -------------------------|------|-----------|-------------|----------------|----------------- chronic                  | 15   | 20        | 5           | 35             | 10 senior_citizen           | 10   | 30        | 0           | 5              | 5 maternity                | 10   | 0         | 30          | 5              | 5 cashless                 | 20   | 15        | 15          | 15             | 30 preventive               | 5    | 5         | 10          | 5              | 5 approval_rate            | 25   | 20        | 25          | 25             | 20 hospital_network         | 15   | 10        | 15          | 10             | 25  ## PROFILE SELECTION LOGIC Use the first matching rule: - if age >= 60 → Senior60+ - elif chronic_condition == true → ChronicPatient - elif marital_status == married and planning_family == true → YoungFamily - elif travel_freq in [\"monthly\", \"weekly\"] → FrequentTraveler - else → Base  ## HARD FILTERS (must be applied before scoring) - If chronic_condition == true: require (chronic_day1 == Y OR ped_waiting_months <= 12) - If age >= 65: require (entry_age_max >= age AND lifelong_renewal == Y) - If want_maternity == true: require (maternity_available == Y AND maternity_waiting_months <= 24) - If sum_insured_min specified: require max_sum_insured_lakhs >= sum_insured_min (convert both to numeric)  ## POLICY ATTRIBUTES TABLE Columns: insurer | product | ped_waiting_months | chronic_day1 | opd_chronic | entry_age_max | lifelong_renewal | copay_senior_pct | senior_sublimits | maternity_available | maternity_waiting_months | maternity_normal_amount | maternity_csection_amount | newborn_day1 | vaccination_cover | annual_checkup | wellness_rewards | telemedicine | opd_general | pre_hosp_days | post_hosp_days | max_sum_insured_lakhs  HDFC Ergo | Optima Secure | 36 | N | N | 65 | Y | 0 | none | N | 0 | 0 | 0 | N | N | Y | N | Y | N | 60 | 180 | 200 HDFC Ergo | Optima Wellbeing Add-on | 0 | N | N | 65 | Y | 0 | none | N | 0 | 0 | 0 | N | N | N | N | Y | Y | 0 | 0 | 0 Star Health | Star Comprehensive | 36 | N | N | 65 | Y | 0 | none | Y | 36 | 30000 | 40000 | Y | Y | Y | Y | Y | N | 60 | 90 | 100 Star Health | Star Health Assure | 36 | N | N | 75 | Y | 0 | none | Y | 36 | 30000 | 40000 | Y | N | Y | Y | Y | N | 60 | 90 | 200 Star Health | Senior Citizens Red Carpet | 12 | N | N | 75 | Y | 30 | many | N | 0 | 0 | 0 | N | N | Y | N | Y | N | 30 | 60 | 25 Niva Bupa | ReAssure | 36 | N | N | 65 | Y | 0 | none | Y | 24 | 50000 | 60000 | Y | Y | Y | N | Y | N | 90 | 180 | 100 Niva Bupa | ReAssure 2.0 | 36 | N | N | 99 | Y | 0 | none | Y | 24 | 50000 | 60000 | Y | Y | Y | N | Y | N | 90 | 180 | 1000 Niva Bupa | ReAssure 3.0 | 36 | N | N | 99 | Y | 0 | none | Y | 24 | 50000 | 60000 | Y | Y | Y | N | Y | N | 60 | 180 | 1000 ICICI Lombard | Complete Health Insurance iHealth | 36 | N | N | 65 | Y | 20 | none | Y | 36 | 15000 | 25000 | N | N | Y | N | Y | N | 30 | 60 | 50 ICICI Lombard | Complete Health Insurance Health Shield | 36 | N | N | 65 | Y | 20 | none | Y | 36 | 15000 | 25000 | N | N | Y | N | Y | N | 30 | 60 | 50 ICICI Lombard | Complete Health Insurance Health Elite | 36 | N | Y | 65 | Y | 20 | none | Y | 36 | 25000 | 40000 | N | N | Y | N | Y | Y | 60 | 180 | 300 ICICI Lombard | Complete Health Insurance | 36 | N | N | 65 | Y | 20 | none | Y | 36 | 15000 | 25000 | N | N | Y | N | Y | N | 30 | 60 | 50 Care | Care Supreme | 36 | N | N | 99 | Y | 0 | none | Y | 24 | 50000 | 60000 | Y | Y | Y | N | Y | N | 30 | 60 | 300 Aditya Birla | Activ One NXT | 36 | Y | Y | 99 | Y | 0 | none | Y | 24 | 75000 | 100000 | Y | Y | Y | Y | Y | Y | 30 | 180 | 200 Aditya Birla | Activ Health | 48 | Y | Y | 99 | Y | 20 | none | Y | 24 | 75000 | 100000 | Y | Y | Y | Y | Y | Y | 30 | 60 | 200 Tata AIG | MediCare Premier | 36 | N | N | 65 | Y | 20 | none | Y | 36 | 30000 | 40000 | Y | Y | Y | N | Y | N | 60 | 180 | 300 Tata AIG | MediCare | 36 | N | N | 65 | Y | 20 | none | Y | 36 | 15000 | 25000 | N | N | Y | N | Y | N | 60 | 180 | 100 Tata AIG | MediCare LITE | 36 | N | N | 65 | Y | 20 | none | N | 0 | 0 | 0 | N | Y | Y | Y | Y | N | 60 | 180 | 25 New India Assurance | Senior Citizen Mediclaim | 18 | N | N | 80 | Y | 20 | many | N | 0 | 0 | 0 | N | N | Y | N | N | N | 30 | 60 | 5  ## MARKET STATS TABLE Columns: insurer | csr_by_count_pct | network_hospitals | direct_inhouse_claims  Star Health | 86.4 | 20000 | Y HDFC Ergo | 97 | 13000 | N Niva Bupa | 93 | 10000 | N ICICI Lombard | 95 | 6500 | N Care | 87 | 24000 | N Aditya Birla | 95.5 | 11000 | N Tata AIG | 94 | 7200 | N ManipalCigna | 91 | 8500 | N New India Assurance | 93.5 | 3000 | N Oriental Insurance | 90 | 3500 | N United India | 88 | 3200 | N National Insurance | 89 | 3500 | N Go Digit | 96.5 | 7000 | N  ## FINAL SCORES Quality = Σ(weight x criterion_score) / 10   (0-100) Value  = Quality / (annual_premium_in_thousands)  (use user's premium if known)  ## NOTES - Always apply hard filters before scoring. - For missing attributes, assume conservative values (e.g., no bonus). - Output only the top 5 policies with their quality scores.",
+          "const": false,
+          "internal": false
+        }
+      },
+      "position": {
+        "x": 817,
+        "y": 870.3999938964844,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "adab835a-3565-44fa-885c-91703b6b7581",
+      "name": "health_insurances_data",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "c3139804": {
+          "key": "c3139804",
+          "type": "vectordb",
+          "value": "adab835a-3565-44fa-885c-91703b6b7581",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 818.6670773420951,
+        "y": 780.7462251589893,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}

@@ -1,0 +1,417 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-21T12:38:00.444Z",
+    "modified_at": "2026-07-21T12:38:00.444Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "hhen8dv0i",
+      "node_id": "node-legal-help-66cba4b0",
+      "version_tag": "v1",
+      "title": "Legal Help",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": "Retrieves case facts and precedents to build a task-specific prompt for legal LLM analysis.\n\nThis node prepares a structured prompt for a legal LLM by querying two vector databases: one for the current/new case and another for historic precedents. It first normalizes the user’s selected task (summary, verdict, progress, precedents, or arguments for either party) and expands the query with domain‑specific keywords to improve retrieval quality. The node then fetches the top‑relevant chunks from both databases, combines them with a strict instruction set (including mandatory rules about grounding every conclusion in the provided context), and outputs a single prompt string ready for an LLM. This design ensures that the LLM’s analysis is confined to authoritative case materials and follows legal reasoning conventions.",
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-legal-help-66cba4b0",
+        "name": "Legal Help",
+        "description": "Retrieves case facts and precedents to build a task-specific prompt for legal LLM analysis.\n\nThis node prepares a structured prompt for a legal LLM by querying two vector databases: one for the current/new case and another for historic precedents. It first normalizes the user’s selected task (summary, verdict, progress, precedents, or arguments for either party) and expands the query with domain‑specific keywords to improve retrieval quality. The node then fetches the top‑relevant chunks from both databases, combines them with a strict instruction set (including mandatory rules about grounding every conclusion in the provided context), and outputs a single prompt string ready for an LLM. This design ensures that the LLM’s analysis is confined to authoritative case materials and follows legal reasoning conventions.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-16 20:38:52.126201"
+      },
+      "constraints": [],
+      "position": {
+        "x": 450.35294058461454,
+        "y": 53.81595116882062,
+        "width": 320,
+        "height": 435,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "query",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "choice",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "summary",
+              "verdict",
+              "progress",
+              "precedents",
+              "petitioner_args",
+              "respondent_args"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "new_case_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "historic_cases_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "gt1zrykmw",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 813.2790153713572,
+        "y": 45.76322929386774,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.1-8B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.1-8B-Instruct",
+              "id": 42
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful legal assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "brvzrqjvl",
+      "source": {
+        "node_id": "4d70231a-de8c-4bb9-af46-1e6308d72e9a",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "hhen8dv0i",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "717spigfk",
+      "source": {
+        "node_id": "bc5b16d0-ae76-4c92-88fa-5f6f3bf5638f",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "hhen8dv0i",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "ngpxfkd5l",
+      "source": {
+        "node_id": "hhen8dv0i",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "gt1zrykmw",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "mm04gg6zx",
+      "node_id": "gt1zrykmw",
+      "port_name": "output",
+      "position": {
+        "x": 1167.6070172279221,
+        "y": 30.79513572661631,
+        "width": 634,
+        "height": 657,
+        "isCollapsed": false,
+        "expandedHeight": 657,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "bc5b16d0-ae76-4c92-88fa-5f6f3bf5638f",
+      "name": "historic_cases",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "72a48d72": {
+          "key": "72a48d72",
+          "type": "vectordb",
+          "value": "bc5b16d0-ae76-4c92-88fa-5f6f3bf5638f",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 159.78644816628048,
+        "y": 389.64927941589093,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "4d70231a-de8c-4bb9-af46-1e6308d72e9a",
+      "name": "ongoing_case",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "179cde86": {
+          "key": "179cde86",
+          "type": "vectordb",
+          "value": "4d70231a-de8c-4bb9-af46-1e6308d72e9a",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 159.78644816628048,
+        "y": 279.64927941589093,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}

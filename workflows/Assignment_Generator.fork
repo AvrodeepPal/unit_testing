@@ -1,0 +1,2400 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-23T17:26:55.242Z",
+    "modified_at": "2026-07-23T17:26:55.242Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "unemp5ht7",
+      "node_id": "node-save-image-(png)-a1361e2c",
+      "version_tag": "v1",
+      "title": "Save Image (PNG)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": {
+                        "text": {
+                          "text": {
+                            "text": {
+                              "text": {
+                                "text": "This node converts a generated image tensor into PNG byte format, making it suitable for saving, downloading, or passing to external systems. It expects an image tensor in the format [B, 3, H, W] (batch, RGB channels, height, width) with values in the range [0, 1].\n\nThe node first validates the tensor shape and ensures it contains RGB data. It then selects the first image in the batch, clamps values to a valid range, and converts the tensor into a NumPy array with pixel values scaled to [0, 255]. This array is transformed into a PIL image and encoded into PNG format using an in-memory buffer.\n\nA configurable compression level (0–9) allows balancing file size and encoding speed. The final output is raw PNG byte data, which can be directly written to a file or transmitted as needed.",
+                                "lineHeight": 14,
+                                "fontSize": 11,
+                                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                              },
+                              "lineHeight": 14,
+                              "fontSize": 11,
+                              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                            },
+                            "lineHeight": 14,
+                            "fontSize": 11,
+                            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                          },
+                          "lineHeight": 14,
+                          "fontSize": 11,
+                          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                        },
+                        "lineHeight": 14,
+                        "fontSize": 11,
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                      },
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-save-image-(png)-a1361e2c",
+        "name": "Save Image (PNG)",
+        "description": "This node converts a generated image tensor into PNG byte format, making it suitable for saving, downloading, or passing to external systems. It expects an image tensor in the format [B, 3, H, W] (batch, RGB channels, height, width) with values in the range [0, 1].\n\nThe node first validates the tensor shape and ensures it contains RGB data. It then selects the first image in the batch, clamps values to a valid range, and converts the tensor into a NumPy array with pixel values scaled to [0, 255]. This array is transformed into a PIL image and encoded into PNG format using an in-memory buffer.\n\nA configurable compression level (0–9) allows balancing file size and encoding speed. The final output is raw PNG byte data, which can be directly written to a file or transmitted as needed.",
+        "category": "image_custom",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-14 14:07:00.236373"
+      },
+      "constraints": [],
+      "position": {
+        "x": 2000,
+        "y": 100,
+        "width": 320,
+        "height": 259,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "image_tensor",
+            "type": [
+              "tensor::image"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "compress_level",
+            "type": [
+              "integer"
+            ],
+            "value": 6,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "image_png",
+            "type": [
+              "image::png"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "i0rtavmpk",
+      "node_id": "node-load-model-(sdxl)-0c07685d",
+      "version_tag": "v1",
+      "title": "Load Model (SDXL)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "This node prepares a fully loaded Stable Diffusion XL pipeline and extracts its core components for use in a custom generation workflow. The model is already provided by the wrapper as a StableDiffusionXLPipeline, so no checkpoint loading is required—only configuration, validation, and decomposition.\n\nThe node first ensures the model is placed on the desired device (such as GPU). It then performs important validation checks specific to SDXL, including verifying the VAE scaling factor and confirming that the scheduler uses a supported prediction type (epsilon or v_prediction).\n\nOnce validated, the pipeline is split into its main building blocks: UNet, VAE, two text encoders (CLIP-L and CLIP BigG), and the scheduler. All neural network components are switched to evaluation mode to ensure stable inference behavior.\n\nThe extracted components are returned ready for downstream tasks such as prompt encoding, sampling, and decoding within an SDXL-based generation pipeline.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-load-model-(sdxl)-0c07685d",
+        "name": "Load Model (SDXL)",
+        "description": "This node prepares a fully loaded Stable Diffusion XL pipeline and extracts its core components for use in a custom generation workflow. The model is already provided by the wrapper as a StableDiffusionXLPipeline, so no checkpoint loading is required—only configuration, validation, and decomposition.\n\nThe node first ensures the model is placed on the desired device (such as GPU). It then performs important validation checks specific to SDXL, including verifying the VAE scaling factor and confirming that the scheduler uses a supported prediction type (epsilon or v_prediction).\n\nOnce validated, the pipeline is split into its main building blocks: UNet, VAE, two text encoders (CLIP-L and CLIP BigG), and the scheduler. All neural network components are switched to evaluation mode to ensure stable inference behavior.\n\nThe extracted components are returned ready for downstream tasks such as prompt encoding, sampling, and decoding within an SDXL-based generation pipeline.",
+        "category": "image_sdxl",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-15 09:07:42.553047"
+      },
+      "constraints": [],
+      "position": {
+        "x": 100.09742120343842,
+        "y": 909.5730659025787,
+        "width": 320,
+        "height": 399,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "sdxl::checkpoint"
+            ],
+            "value": "Juggernaut-XL_v9_RunDiffusionPhoto_v2",
+            "modelMetadata": {
+              "displayName": "Juggernaut-XL_v9_RunDiffusionPhoto_v2",
+              "id": 16
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "device",
+            "type": [
+              "string"
+            ],
+            "value": "cuda",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "unet",
+            "type": [
+              "sdxl::unet"
+            ]
+          },
+          {
+            "port_index": 1,
+            "name": "vae",
+            "type": [
+              "sdxl::vae"
+            ]
+          },
+          {
+            "port_index": 2,
+            "name": "text_encoder_1",
+            "type": [
+              "sdxl::clip_l"
+            ]
+          },
+          {
+            "port_index": 3,
+            "name": "text_encoder_2",
+            "type": [
+              "sdxl::clip_g"
+            ]
+          },
+          {
+            "port_index": 4,
+            "name": "scheduler",
+            "type": [
+              "file::scheduler"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "fnv55kj3f",
+      "node_id": "node-clip-text-encode-(sdxl)-e87b6342",
+      "version_tag": "v1",
+      "title": "Clip Text Encode (SDXL)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "This node converts a text prompt into the dual-embedding format required by Stable Diffusion XL by leveraging both CLIP text encoders (CLIP-L and CLIP BigG). Since both encoders and their tokenizers are already preloaded by the wrapper, the node focuses on tokenization, encoding, and combining outputs into SDXL-compatible conditioning tensors.\n\nThe prompt is independently tokenized using each encoder’s attached tokenizer, with padding and truncation to the standard 77-token length. These tokens are then passed through their respective text encoders under autocast for efficient mixed-precision inference.\n\nFor SDXL conditioning, the node extracts the penultimate hidden states from both encoders and concatenates them along the feature dimension to form the final prompt_embeds. This provides richer semantic understanding compared to single-encoder setups. Additionally, it extracts a pooled embedding (from the [CLS] token of the second encoder), which is used for global conditioning in the diffusion process.\n\nThe outputs are:\n\nprompt_embeds → token-level conditioning (used in UNet cross-attention)\npooled_prompt_embeds → global conditioning (used via added_cond_kwargs)\n\nTogether, these embeddings fully represent the prompt in a format required for SDXL image generation.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-clip-text-encode-(sdxl)-e87b6342",
+        "name": "Clip Text Encode (SDXL)",
+        "description": "This node converts a text prompt into the dual-embedding format required by Stable Diffusion XL by leveraging both CLIP text encoders (CLIP-L and CLIP BigG). Since both encoders and their tokenizers are already preloaded by the wrapper, the node focuses on tokenization, encoding, and combining outputs into SDXL-compatible conditioning tensors.\n\nThe prompt is independently tokenized using each encoder’s attached tokenizer, with padding and truncation to the standard 77-token length. These tokens are then passed through their respective text encoders under autocast for efficient mixed-precision inference.\n\nFor SDXL conditioning, the node extracts the penultimate hidden states from both encoders and concatenates them along the feature dimension to form the final prompt_embeds. This provides richer semantic understanding compared to single-encoder setups. Additionally, it extracts a pooled embedding (from the [CLS] token of the second encoder), which is used for global conditioning in the diffusion process.\n\nThe outputs are:\n\nprompt_embeds → token-level conditioning (used in UNet cross-attention)\npooled_prompt_embeds → global conditioning (used via added_cond_kwargs)\n\nTogether, these embeddings fully represent the prompt in a format required for SDXL image generation.",
+        "category": "image_sdxl",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-15 09:36:44.154141"
+      },
+      "constraints": [],
+      "position": {
+        "x": 480,
+        "y": 505,
+        "width": 320,
+        "height": 420,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ],
+            "value": "ugly,blurry,watermark",
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "text_encoder_1",
+            "type": [
+              "sdxl::clip_l"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "text_encoder_2",
+            "type": [
+              "sdxl::clip_g"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ]
+          },
+          {
+            "port_index": 1,
+            "name": "pooled_prompt_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ctjjx9bb3",
+      "node_id": "node-clip-text-encode-(sdxl)-e87b6342",
+      "version_tag": "v1",
+      "title": "Clip Text Encode (SDXL)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "This node converts a text prompt into the dual-embedding format required by Stable Diffusion XL by leveraging both CLIP text encoders (CLIP-L and CLIP BigG). Since both encoders and their tokenizers are already preloaded by the wrapper, the node focuses on tokenization, encoding, and combining outputs into SDXL-compatible conditioning tensors.\n\nThe prompt is independently tokenized using each encoder’s attached tokenizer, with padding and truncation to the standard 77-token length. These tokens are then passed through their respective text encoders under autocast for efficient mixed-precision inference.\n\nFor SDXL conditioning, the node extracts the penultimate hidden states from both encoders and concatenates them along the feature dimension to form the final prompt_embeds. This provides richer semantic understanding compared to single-encoder setups. Additionally, it extracts a pooled embedding (from the [CLS] token of the second encoder), which is used for global conditioning in the diffusion process.\n\nThe outputs are:\n\nprompt_embeds → token-level conditioning (used in UNet cross-attention)\npooled_prompt_embeds → global conditioning (used via added_cond_kwargs)\n\nTogether, these embeddings fully represent the prompt in a format required for SDXL image generation.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-clip-text-encode-(sdxl)-e87b6342",
+        "name": "Clip Text Encode (SDXL)",
+        "description": "This node converts a text prompt into the dual-embedding format required by Stable Diffusion XL by leveraging both CLIP text encoders (CLIP-L and CLIP BigG). Since both encoders and their tokenizers are already preloaded by the wrapper, the node focuses on tokenization, encoding, and combining outputs into SDXL-compatible conditioning tensors.\n\nThe prompt is independently tokenized using each encoder’s attached tokenizer, with padding and truncation to the standard 77-token length. These tokens are then passed through their respective text encoders under autocast for efficient mixed-precision inference.\n\nFor SDXL conditioning, the node extracts the penultimate hidden states from both encoders and concatenates them along the feature dimension to form the final prompt_embeds. This provides richer semantic understanding compared to single-encoder setups. Additionally, it extracts a pooled embedding (from the [CLS] token of the second encoder), which is used for global conditioning in the diffusion process.\n\nThe outputs are:\n\nprompt_embeds → token-level conditioning (used in UNet cross-attention)\npooled_prompt_embeds → global conditioning (used via added_cond_kwargs)\n\nTogether, these embeddings fully represent the prompt in a format required for SDXL image generation.",
+        "category": "image_sdxl",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-15 09:36:44.154141"
+      },
+      "constraints": [],
+      "position": {
+        "x": 860,
+        "y": 100,
+        "width": 320,
+        "height": 420,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "text_encoder_1",
+            "type": [
+              "sdxl::clip_l"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "text_encoder_2",
+            "type": [
+              "sdxl::clip_g"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ]
+          },
+          {
+            "port_index": 1,
+            "name": "pooled_prompt_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "4gne22j8o",
+      "node_id": "node-k-sampler-(sdxl)-bd3752dd",
+      "version_tag": "v1",
+      "title": "K-Sampler (SDXL)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "This node implements the core denoising process for Stable Diffusion XL, generating latent images from random noise using classifier-free guidance (CFG). It uses a UNet model along with dual text conditioning (prompt embeddings and pooled embeddings) to iteratively refine noise into a structured latent representation.\nThe node begins by preparing the UNet for inference and setting a deterministic random seed for reproducibility. It initializes latent noise based on the desired output resolution and scales it according to the scheduler’s noise distribution. The scheduler is configured with the specified number of denoising steps, controlling how many refinement iterations will be performed.\nA key part of SDXL is its additional conditioning, which includes both token-level embeddings and pooled embeddings, along with spatial metadata (time_ids) that describe the image size and crop. These are combined for both positive and negative prompts to enable classifier-free guidance.\nDuring the denoising loop, the latents are duplicated and passed through the UNet with both conditional and unconditional inputs. The model predicts noise for each, and CFG is applied to guide the output toward the prompt using the cfg scale. The scheduler then updates the latents at each timestep, progressively transforming noise into meaningful structure.\nThe final output is a latent tensor (sdxl::latent_image) with shape [1, 4, H/8, W/8], which can be passed to a VAE decoder to produce the final image.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-k-sampler-(sdxl)-bd3752dd",
+        "name": "K-Sampler (SDXL)",
+        "description": "This node implements the core denoising process for Stable Diffusion XL, generating latent images from random noise using classifier-free guidance (CFG). It uses a UNet model along with dual text conditioning (prompt embeddings and pooled embeddings) to iteratively refine noise into a structured latent representation.\nThe node begins by preparing the UNet for inference and setting a deterministic random seed for reproducibility. It initializes latent noise based on the desired output resolution and scales it according to the scheduler’s noise distribution. The scheduler is configured with the specified number of denoising steps, controlling how many refinement iterations will be performed.\nA key part of SDXL is its additional conditioning, which includes both token-level embeddings and pooled embeddings, along with spatial metadata (time_ids) that describe the image size and crop. These are combined for both positive and negative prompts to enable classifier-free guidance.\nDuring the denoising loop, the latents are duplicated and passed through the UNet with both conditional and unconditional inputs. The model predicts noise for each, and CFG is applied to guide the output toward the prompt using the cfg scale. The scheduler then updates the latents at each timestep, progressively transforming noise into meaningful structure.\nThe final output is a latent tensor (sdxl::latent_image) with shape [1, 4, H/8, W/8], which can be passed to a VAE decoder to produce the final image.",
+        "category": "image_sdxl",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-15 09:32:39.867836"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1240,
+        "y": 100,
+        "width": 320,
+        "height": 659,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "unet",
+            "type": [
+              "sdxl::unet"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "positive_prompt_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "negative_prompt_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "positive_pooled_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "negative_pooled_embeds",
+            "type": [
+              "tensor::text_embedding"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "scheduler",
+            "type": [
+              "file::scheduler"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "steps",
+            "type": [
+              "integer"
+            ],
+            "value": 30,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 7,
+            "name": "cfg",
+            "type": [
+              "number"
+            ],
+            "value": 5,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 8,
+            "name": "seed",
+            "type": [
+              "integer"
+            ],
+            "value": 42,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 9,
+            "name": "width",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 10,
+            "name": "height",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "latents",
+            "type": [
+              "tensor::latent_image"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "nuvi8my4z",
+      "node_id": "node-vae-decode-(sdxl)-9fd8a18c",
+      "version_tag": "v1",
+      "title": "VAE Decode (SDXL)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "This node converts latent representations from a Stable Diffusion XL pipeline back into full-resolution RGB images using the VAE decoder. The VAE model is already preloaded by the wrapper, so the node focuses on preparing inputs and performing efficient decoding.\n\nIt begins by aligning the latent tensor with the VAE’s device and datatype, then applies the inverse of the SDXL latent scaling factor to restore the correct value range. The latents are passed through the VAE decoder under autocast (mixed precision) for optimized performance on compatible hardware.\n\nFinally, the decoded output is normalized from the latent range [-1, 1] to a standard [0, 1] image range. The result is a ready-to-use image tensor that can be displayed, saved, or further processed.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-vae-decode-(sdxl)-9fd8a18c",
+        "name": "VAE Decode (SDXL)",
+        "description": "This node converts latent representations from a Stable Diffusion XL pipeline back into full-resolution RGB images using the VAE decoder. The VAE model is already preloaded by the wrapper, so the node focuses on preparing inputs and performing efficient decoding.\n\nIt begins by aligning the latent tensor with the VAE’s device and datatype, then applies the inverse of the SDXL latent scaling factor to restore the correct value range. The latents are passed through the VAE decoder under autocast (mixed precision) for optimized performance on compatible hardware.\n\nFinally, the decoded output is normalized from the latent range [-1, 1] to a standard [0, 1] image range. The result is a ready-to-use image tensor that can be displayed, saved, or further processed.",
+        "category": "image_sdxl",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-15 08:59:23.457808"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1620,
+        "y": 100,
+        "width": 320,
+        "height": 279,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "vae",
+            "type": [
+              "sdxl::vae"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "latents",
+            "type": [
+              "tensor::latent_image"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "image",
+            "type": [
+              "tensor::image"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "nb81es6w1",
+      "node_id": "node-user-input-6977b12f",
+      "version_tag": "v1",
+      "title": "User Input",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": "User Input",
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-user-input-6977b12f",
+        "name": "User Input",
+        "description": "User Input",
+        "category": "llm",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-17 17:35:12.359513"
+      },
+      "constraints": [],
+      "position": {
+        "x": 105.40175005359481,
+        "y": 94.21101041017442,
+        "width": 320,
+        "height": 745,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "topic",
+            "type": [
+              "string"
+            ],
+            "value": "French Revolution",
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "output_type",
+            "type": [
+              "string"
+            ],
+            "value": "assignment",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "poster",
+              "assignment"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "writing_tone",
+            "type": [
+              "string"
+            ],
+            "value": "academic",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "academic",
+              "simple",
+              "creative"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "language",
+            "type": [
+              "string"
+            ],
+            "value": "English",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "num_sections",
+            "type": [
+              "integer"
+            ],
+            "value": 4,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "num_images",
+            "type": [
+              "integer"
+            ],
+            "value": 1,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "image_style",
+            "type": [
+              "string"
+            ],
+            "value": "illustrated",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "realistic",
+              "illustrated",
+              "creative"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "topic",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 1,
+            "name": "output_type",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 2,
+            "name": "writing_tone",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 3,
+            "name": "num_sections",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 4,
+            "name": "num_images",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 5,
+            "name": "image_style",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 6,
+            "name": "language",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 7,
+            "name": "planner_prompt",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 8,
+            "name": "image_planner_prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "4482mdpl5",
+      "node_id": "node-build-content--daa185b4",
+      "version_tag": "v1",
+      "title": "Build Content",
+      "description": {
+        "text": {
+          "text": {
+            "text": "Build Content",
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-build-content--daa185b4",
+        "name": "Build Content",
+        "description": "Build Content",
+        "category": "llm",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-17 17:27:26.682636"
+      },
+      "constraints": [],
+      "position": {
+        "x": 868.5493869009638,
+        "y": 569.1034982013211,
+        "width": 320,
+        "height": 379,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "planner_output",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "topic",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "writing_tone",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "language",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "content_prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "xt99qtany",
+      "node_id": "node-conditional-branch-1e961622",
+      "version_tag": "v1",
+      "title": "Conditional Branch",
+      "description": {
+        "text": {
+          "text": {
+            "text": "Conditional Branch",
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-conditional-branch-1e961622",
+        "name": "Conditional Branch",
+        "description": "Conditional Branch",
+        "category": "llm",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-17 17:29:26.798353"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1638.6314899369481,
+        "y": 416.9285752881083,
+        "width": 320,
+        "height": 464,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "topic",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "writing_tone",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "language",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "text_content",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "output_type",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "poster_content",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 1,
+            "name": "assignment_content",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "qjrycs8jt",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": {
+          "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1255.39252826981,
+        "y": 849.1528315318714,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.3-70B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.3-70B-Instruct",
+              "id": 43
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 2050,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.4,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": false,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "mlhozlp50",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": {
+          "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 487.58367439385836,
+        "y": 95.02739663922046,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.1-8B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.1-8B-Instruct",
+              "id": 42
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "g0ofyt9nu",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": {
+          "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 498.7891812464966,
+        "y": 952.3593018036365,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.1-8B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.1-8B-Instruct",
+              "id": 42
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "airqa63au",
+      "node_id": "node-google-docs-writter--4acac1b5",
+      "version_tag": "v1",
+      "title": "Google Docs Writer",
+      "description": {
+        "text": "This node creates or updates a Google Docs document from generated content and optionally embeds a PNG image at a predefined placeholder. It handles the complete Google Docs and Google Drive workflow automatically, allowing AI-generated reports, assignments, posters, or other documents to be exported directly into Google Docs with proper formatting.\n\nIf an image is provided, the node first uploads it to Google Drive using the supplied OAuth access token. The uploaded image is then made publicly readable so it can be inserted into a Google Docs document as an inline image. The node accepts the image either as raw PNG bytes, a file path, or a file-like object, making it compatible with multiple upstream image-producing nodes.\n\nThe node can either create a new Google document using the specified document title or update an existing document when a document ID is supplied. When Append Mode is enabled, new content is inserted at the end of the existing document while preserving all previous content. Otherwise, the new content is inserted from the beginning of the document.\n\nAfter inserting the text, the node automatically applies basic document formatting by converting recognized title and section markers into Google Docs heading styles. Lines beginning with markers such as POSTER TITLE: or ASSIGNMENT TITLE: are formatted as Heading 1, while section headers such as SECTION, INTRODUCTION, CONCLUSION, and [SECTION] are formatted as Heading 2. This allows structured AI-generated content to appear as a properly organized document without requiring manual editing.\n\nIf the document contains the special placeholder [IMAGE_INSERT_HERE], the node locates its exact position, removes the placeholder text, and replaces it with the uploaded image. The image is inserted inline at the marker location using a predefined display size, ensuring that generated diagrams, posters, charts, or illustrations appear in the intended position within the document.\n\nOnce processing is complete, the node returns both the Google Document ID and the document URL, allowing downstream nodes or users to access, share, or continue editing the generated document directly in Google Docs.",
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-google-docs-writter--4acac1b5",
+        "name": "Google Docs Writer",
+        "description": "This node creates or updates a Google Docs document from generated content and optionally embeds a PNG image at a predefined placeholder. It handles the complete Google Docs and Google Drive workflow automatically, allowing AI-generated reports, assignments, posters, or other documents to be exported directly into Google Docs with proper formatting.\n\nIf an image is provided, the node first uploads it to Google Drive using the supplied OAuth access token. The uploaded image is then made publicly readable so it can be inserted into a Google Docs document as an inline image. The node accepts the image either as raw PNG bytes, a file path, or a file-like object, making it compatible with multiple upstream image-producing nodes.\n\nThe node can either create a new Google document using the specified document title or update an existing document when a document ID is supplied. When Append Mode is enabled, new content is inserted at the end of the existing document while preserving all previous content. Otherwise, the new content is inserted from the beginning of the document.\n\nAfter inserting the text, the node automatically applies basic document formatting by converting recognized title and section markers into Google Docs heading styles. Lines beginning with markers such as POSTER TITLE: or ASSIGNMENT TITLE: are formatted as Heading 1, while section headers such as SECTION, INTRODUCTION, CONCLUSION, and [SECTION] are formatted as Heading 2. This allows structured AI-generated content to appear as a properly organized document without requiring manual editing.\n\nIf the document contains the special placeholder [IMAGE_INSERT_HERE], the node locates its exact position, removes the placeholder text, and replaces it with the uploaded image. The image is inserted inline at the marker location using a predefined display size, ensuring that generated diagrams, posters, charts, or illustrations appear in the intended position within the document.\n\nOnce processing is complete, the node returns both the Google Document ID and the document URL, allowing downstream nodes or users to access, share, or continue editing the generated document directly in Google Docs.",
+        "category": "integration",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-17 17:38:15.012236"
+      },
+      "constraints": [],
+      "position": {
+        "x": 2360.549563882643,
+        "y": 70.49054405814141,
+        "width": 320,
+        "height": 494,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "content",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "image_png",
+            "type": [
+              "image::png",
+              "image::jpg",
+              "image::jpeg"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "access_token",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "document_title",
+            "type": [
+              "string"
+            ],
+            "value": "Generated Document",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "document_id",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "append_mode",
+            "type": [
+              "boolean"
+            ],
+            "value": false,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "doc_id",
+            "type": [
+              "string"
+            ]
+          },
+          {
+            "port_index": 1,
+            "name": "doc_url",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "mj2lo5se2",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 3,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "fnv55kj3f",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "m4i2h8ls9",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 2,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "fnv55kj3f",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "mw47e9l5l",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 2,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "ctjjx9bb3",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "yuoro7vr0",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 3,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "ctjjx9bb3",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "zxagwn7ou",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne22j8o",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "ga5ludgfq",
+      "source": {
+        "node_id": "ctjjx9bb3",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne22j8o",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "dpeavc9sg",
+      "source": {
+        "node_id": "ctjjx9bb3",
+        "port_index": 1,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne22j8o",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "nhmaivsyx",
+      "source": {
+        "node_id": "fnv55kj3f",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne22j8o",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "ka92lw2gb",
+      "source": {
+        "node_id": "fnv55kj3f",
+        "port_index": 1,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne22j8o",
+        "port_index": 4,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "yawbzc9a0",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 4,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne22j8o",
+        "port_index": 5,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "f469pcc49",
+      "source": {
+        "node_id": "nuvi8my4z",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "unemp5ht7",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "1vuq9uyil",
+      "source": {
+        "node_id": "i0rtavmpk",
+        "port_index": 1,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "nuvi8my4z",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "1i01382wj",
+      "source": {
+        "node_id": "4gne22j8o",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "nuvi8my4z",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "761u422t1",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4482mdpl5",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "64m5ls7hs",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 2,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4482mdpl5",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "mbm4cmwuy",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 6,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4482mdpl5",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "8u01p6l7f",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "xt99qtany",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "llw2ew4de",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 2,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "xt99qtany",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "sqq42bwnl",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 6,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "xt99qtany",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "1c5b45dg7",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 1,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "xt99qtany",
+        "port_index": 4,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "scb134dai",
+      "source": {
+        "node_id": "4482mdpl5",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "qjrycs8jt",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "o0ld3nvtq",
+      "source": {
+        "node_id": "qjrycs8jt",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "xt99qtany",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "bzurza0ym",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 7,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "g0ofyt9nu",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "3n5qd29g9",
+      "source": {
+        "node_id": "nb81es6w1",
+        "port_index": 8,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "mlhozlp50",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "5cjvy2gmr",
+      "source": {
+        "node_id": "mlhozlp50",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "ctjjx9bb3",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "b2ovzeh96",
+      "source": {
+        "node_id": "g0ofyt9nu",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4482mdpl5",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "se97tlw7q",
+      "source": {
+        "node_id": "unemp5ht7",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "airqa63au",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "z79wmqynh",
+      "source": {
+        "node_id": "xt99qtany",
+        "port_index": 1,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "airqa63au",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "jzu5c6zus",
+      "node_id": "airqa63au",
+      "port_name": "doc_id",
+      "position": {
+        "x": 2088.657632185149,
+        "y": 653.1596776022933,
+        "width": 400,
+        "height": 400,
+        "isCollapsed": false,
+        "expandedHeight": 400,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [],
+  "input_widgets": []
+}

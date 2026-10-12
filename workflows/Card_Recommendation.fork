@@ -1,0 +1,1230 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-27T15:25:29.583Z",
+    "modified_at": "2026-07-27T15:25:29.583Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "vej796289",
+      "node_id": "node-user-profile-input-(card-recommendation)-889ef8c7",
+      "version_tag": "v1",
+      "title": "User Profile Input (Card Recommendation)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "Validates seven financial inputs and returns a pipe‑delimited profile string for credit card eligibility.\n\nThis node accepts manual user inputs from a financial eligibility screen and transforms them into a standardized pipe‑separated string for downstream processing. It takes seven parameters: employment type, monthly income, monthly card spend, three top spending categories, and CIBIL score. The node first validates that all inputs are present and non‑empty. It then concatenates the three spending categories into a single comma‑separated string. Using the validated values, it builds a string following the format Employment: <value> | Income: <value> | CardSpend: <value> | Categories: <value> | Cibil: <value>. This structured output allows downstream nodes (e.g., eligibility checkers, card catalog retrievers) to parse the profile reliably without re‑validating the inputs. No extra prefixes or metadata are added - the raw profile string is returned directly.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-user-profile-input-(card-recommendation)-889ef8c7",
+        "name": "User Profile Input (Card Recommendation)",
+        "description": "Validates seven financial inputs and returns a pipe‑delimited profile string for credit card eligibility.\n\nThis node accepts manual user inputs from a financial eligibility screen and transforms them into a standardized pipe‑separated string for downstream processing. It takes seven parameters: employment type, monthly income, monthly card spend, three top spending categories, and CIBIL score. The node first validates that all inputs are present and non‑empty. It then concatenates the three spending categories into a single comma‑separated string. Using the validated values, it builds a string following the format Employment: <value> | Income: <value> | CardSpend: <value> | Categories: <value> | Cibil: <value>. This structured output allows downstream nodes (e.g., eligibility checkers, card catalog retrievers) to parse the profile reliably without re‑validating the inputs. No extra prefixes or metadata are added - the raw profile string is returned directly.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-05-04 08:06:06.299675"
+      },
+      "constraints": [],
+      "position": {
+        "x": 274.8270714492195,
+        "y": 94.47829747507535,
+        "width": 320,
+        "height": 529,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "employment",
+            "type": [
+              "string"
+            ],
+            "value": "Salaried",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Salaried",
+              "Self-employed",
+              "Student",
+              "Retired"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "monthly_income",
+            "type": [
+              "string"
+            ],
+            "value": "₹50,000 - ₹1,00,000",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Below ₹25,000",
+              "₹25,000 - ₹50,000",
+              "₹50,000 - ₹1,00,000",
+              "₹1,00,000 - ₹2,00,000",
+              "Above ₹2,00,000"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "monthly_spend",
+            "type": [
+              "string"
+            ],
+            "value": "₹25,000 - ₹50,000",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Below ₹10,000",
+              "₹10,000 - ₹25,000",
+              "₹25,000 - ₹50,000",
+              "₹50,000 - ₹1,00,000",
+              "Above ₹1,00,000"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "top_category_1",
+            "type": [
+              "string"
+            ],
+            "value": "Fuel",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Online shopping",
+              "Fuel",
+              "Dining",
+              "Domestic travel",
+              "International travel",
+              "Groceries",
+              "Utilities",
+              "Education",
+              "Other"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "top_category_2",
+            "type": [
+              "string"
+            ],
+            "value": "Domestic travel",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Online shopping",
+              "Fuel",
+              "Dining",
+              "Domestic travel",
+              "International travel",
+              "Groceries",
+              "Utilities",
+              "Education",
+              "Other"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "top_category_3",
+            "type": [
+              "string"
+            ],
+            "value": "International travel",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Online shopping",
+              "Fuel",
+              "Dining",
+              "Domestic travel",
+              "International travel",
+              "Groceries",
+              "Utilities",
+              "Education",
+              "Other"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "cibil_score",
+            "type": [
+              "integer"
+            ],
+            "value": 800,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "profile_data",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "d27r35v1u",
+      "node_id": "node-user-lifestyle-input-(card-recommendation)-d9e1d588",
+      "version_tag": "v1",
+      "title": "User Lifestyle Input (Card Recommendation)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "Normalizes user lifestyle preferences and existing card data into a pipe‑delimited string for card ranking.\n\nThis node maps manual lifestyle and preference inputs from a second screen into a standardized pipe‑delimited string used by the credit card ranking engine. It accepts eight inputs: skip optimization flag, existing cards list, first card indicator, annual domestic/international flights, vehicle usage, reward preference, and fee tolerance. The node first checks if optimization should be skipped — if true, it returns an empty string. It then applies a critical logic override: if the user holds no existing cards (i.e., “None”), the first card indicator is forcibly set to “None” to prevent contradictory input. After cleaning the values, it builds a string following the format ExistingCards: <value> | FirstCard: <value> | DomesticFlights: <value> | InternationalFlights: <value> | DrivesVehicle: <value> | RewardPref: <value> | FeeTolerance: <value>. This output enables downstream recommendation nodes to personalize card suggestions based on travel habits, fuel usage, reward preferences, and fee sensitivity, while respecting the user’s existing credit card portfolio.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-user-lifestyle-input-(card-recommendation)-d9e1d588",
+        "name": "User Lifestyle Input (Card Recommendation)",
+        "description": "Normalizes user lifestyle preferences and existing card data into a pipe‑delimited string for card ranking.\n\nThis node maps manual lifestyle and preference inputs from a second screen into a standardized pipe‑delimited string used by the credit card ranking engine. It accepts eight inputs: skip optimization flag, existing cards list, first card indicator, annual domestic/international flights, vehicle usage, reward preference, and fee tolerance. The node first checks if optimization should be skipped — if true, it returns an empty string. It then applies a critical logic override: if the user holds no existing cards (i.e., “None”), the first card indicator is forcibly set to “None” to prevent contradictory input. After cleaning the values, it builds a string following the format ExistingCards: <value> | FirstCard: <value> | DomesticFlights: <value> | InternationalFlights: <value> | DrivesVehicle: <value> | RewardPref: <value> | FeeTolerance: <value>. This output enables downstream recommendation nodes to personalize card suggestions based on travel habits, fuel usage, reward preferences, and fee sensitivity, while respecting the user’s existing credit card portfolio.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-05-18 20:07:52.684214"
+      },
+      "constraints": [],
+      "position": {
+        "x": 265.3639634610846,
+        "y": 681.4282001256493,
+        "width": 320,
+        "height": 559,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "skip_optimization",
+            "type": [
+              "string"
+            ],
+            "value": "False",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "True",
+              "False"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 1,
+            "name": "existing_cards",
+            "type": [
+              "string"
+            ],
+            "value": "None",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "is_first_card",
+            "type": [
+              "string"
+            ],
+            "value": "None",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "True",
+              "False",
+              "None"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "domestic_flights_per_year",
+            "type": [
+              "string"
+            ],
+            "value": "3-5",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "0",
+              "1-2",
+              "3-5",
+              "6-10",
+              "10+"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "international_flights_per_year",
+            "type": [
+              "string"
+            ],
+            "value": "1-2",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "0",
+              "1-2",
+              "3-5",
+              "6-10",
+              "10+"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "drives_vehicle",
+            "type": [
+              "string"
+            ],
+            "value": "True",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "True",
+              "False"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "reward_preference",
+            "type": [
+              "string"
+            ],
+            "value": "Travel Miles",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Cashback",
+              "Travel Miles",
+              "Reward Points",
+              "Lounge Access",
+              "Flexible"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 7,
+            "name": "fee_tolerance",
+            "type": [
+              "string"
+            ],
+            "value": "Medium (₹1,000-₹5,000)",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Zero Fee",
+              "Low (₹0-₹1,000)",
+              "Medium (₹1,000-₹5,000)",
+              "High (₹5,000+)"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "lifestyle_data",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "o6fn3w1g6",
+      "node_id": "node-card-catalog-fb710069",
+      "version_tag": "v1",
+      "title": "Card Catalog",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": "Queries a vector database to retrieve eligible credit cards and builds a prompt for LLM shortlisting.\n\nThis node creates a prompt that asks an LLM to shortlist the 10 best credit cards for a user based on their profile. It first parses the user’s employment, income, CIBIL, spend tier, and preferred spending categories from a pipe‑separated string. It then normalizes the CIBIL into a bucket (excellent, very_good, good, fair, poor, very_poor) and constructs a retrieval query that includes these eligibility dimensions. The vector database returns up to 25 candidate card records, which are then fed into a strict prompt template. The LLM must apply hard eligibility rules (income and CIBIL thresholds) and smart matching rules (spending behavior, category fit, value optimization). The output is a bullet‑list of exactly ten cards with their IDs, names, and one‑line reasons - no additional explanation or formatting. This node acts as the first‑stage filter before detailed ranking.",
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-card-catalog-fb710069",
+        "name": "Card Catalog",
+        "description": "Queries a vector database to retrieve eligible credit cards and builds a prompt for LLM shortlisting.\n\nThis node creates a prompt that asks an LLM to shortlist the 10 best credit cards for a user based on their profile. It first parses the user’s employment, income, CIBIL, spend tier, and preferred spending categories from a pipe‑separated string. It then normalizes the CIBIL into a bucket (excellent, very_good, good, fair, poor, very_poor) and constructs a retrieval query that includes these eligibility dimensions. The vector database returns up to 25 candidate card records, which are then fed into a strict prompt template. The LLM must apply hard eligibility rules (income and CIBIL thresholds) and smart matching rules (spending behavior, category fit, value optimization). The output is a bullet‑list of exactly ten cards with their IDs, names, and one‑line reasons - no additional explanation or formatting. This node acts as the first‑stage filter before detailed ranking.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-30 15:22:19.393813"
+      },
+      "constraints": [],
+      "position": {
+        "x": 676.5681969142101,
+        "y": 85.37508303292941,
+        "width": 320,
+        "height": 279,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "card_catalog",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "ag6r5xmdi",
+      "node_id": "node-text-generate-(gemma)-0d5bdde2",
+      "version_tag": "v1",
+      "title": "Text Generate (Gemma)",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-text-generate-(gemma)-0d5bdde2",
+        "name": "Text Generate (Gemma)",
+        "description": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+        "category": "llm_gemma",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-30 13:59:40.668862"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1045.782581397476,
+        "y": 673.0652602653996,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "gemma::model_weights"
+            ],
+            "value": "gemma-4-E4B-it",
+            "modelMetadata": {
+              "displayName": "gemma-4-E4B-it",
+              "id": 64
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "You are a helpful assistant.",
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "enable_thinking",
+            "type": [
+              "boolean"
+            ],
+            "value": false,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 1,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.95,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 7,
+            "name": "top_k",
+            "type": [
+              "integer"
+            ],
+            "value": 64,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 8,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "i9rjo6rse",
+      "node_id": "node-card-recommendation-0a9a1c00",
+      "version_tag": "v1",
+      "title": "Card Recommendation",
+      "description": {
+        "text": {
+          "text": {
+            "text": "Merges user profile, lifestyle, and shortlisted cards into a forensic ranking prompt for top 3 cards.\n\nThis node prepares a final prompt for ranking credit cards after an initial shortlist has been generated. It extracts card IDs from the shortlisted cards output, retrieves full technical specifications from a vector catalog, and also fetches wildcard cards that match the user’s lifestyle preferences (e.g., reward preference, travel frequency, fuel usage, fee tolerance). The node then builds a comprehensive prompt that includes eligibility locks (income and CIBIL checks), an existing‑card filter, a net annual value calculation, and lifestyle‑based optimization. The LLM is instructed to output exactly three cards in a structured format with reasons and estimated value. This ensures that the final recommendation is data‑driven, personalized, and free of markdown or extra commentary.",
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-card-recommendation-0a9a1c00",
+        "name": "Card Recommendation",
+        "description": "Merges user profile, lifestyle, and shortlisted cards into a forensic ranking prompt for top 3 cards.\n\nThis node prepares a final prompt for ranking credit cards after an initial shortlist has been generated. It extracts card IDs from the shortlisted cards output, retrieves full technical specifications from a vector catalog, and also fetches wildcard cards that match the user’s lifestyle preferences (e.g., reward preference, travel frequency, fuel usage, fee tolerance). The node then builds a comprehensive prompt that includes eligibility locks (income and CIBIL checks), an existing‑card filter, a net annual value calculation, and lifestyle‑based optimization. The LLM is instructed to output exactly three cards in a structured format with reasons and estimated value. This ensures that the final recommendation is data‑driven, personalized, and free of markdown or extra commentary.",
+        "category": "finance",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-29 06:10:19.683810"
+      },
+      "constraints": [],
+      "position": {
+        "x": 667.799725729987,
+        "y": 676.9667764682234,
+        "width": 320,
+        "height": 379,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile_data",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_lifestyle_data",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "shortlisted_cards",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "card_catalog",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "qpx2om05f",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": {
+          "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1051.1416353613652,
+        "y": 81.40240215935692,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.3-70B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.3-70B-Instruct",
+              "id": 43
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "fzwng5m9a",
+      "source": {
+        "node_id": "vej796289",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "o6fn3w1g6",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "jammyc5df",
+      "source": {
+        "node_id": "1130a316-c182-40fc-b662-9ec2375e1ac7",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "o6fn3w1g6",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "y20wmtr7m",
+      "source": {
+        "node_id": "d27r35v1u",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "i9rjo6rse",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "h8ffi8wej",
+      "source": {
+        "node_id": "vej796289",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "i9rjo6rse",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "4ldnk7u7f",
+      "source": {
+        "node_id": "1130a316-c182-40fc-b662-9ec2375e1ac7",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "i9rjo6rse",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "5bxso25sd",
+      "source": {
+        "node_id": "o6fn3w1g6",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "qpx2om05f",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "pq8edmvq0",
+      "source": {
+        "node_id": "qpx2om05f",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "i9rjo6rse",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "fu0blp4lk",
+      "source": {
+        "node_id": "i9rjo6rse",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "ag6r5xmdi",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "9sp0yy1dj",
+      "node_id": "ag6r5xmdi",
+      "port_name": "output",
+      "position": {
+        "x": 1432.4965008827255,
+        "y": 662.7902567976005,
+        "width": 561.2972090379246,
+        "height": 534.2568575243718,
+        "isCollapsed": false,
+        "expandedHeight": 534.2568575243718,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "k3t6fjgcz",
+      "node_id": "qpx2om05f",
+      "port_name": "output",
+      "position": {
+        "x": 1419.508169999757,
+        "y": 70.7729374922431,
+        "width": 573.5970986266677,
+        "height": 516.755570757759,
+        "isCollapsed": false,
+        "expandedHeight": 516.755570757759,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "1130a316-c182-40fc-b662-9ec2375e1ac7",
+      "name": "card_catalog",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "f57bfbfa": {
+          "key": "f57bfbfa",
+          "type": "vectordb",
+          "value": "1130a316-c182-40fc-b662-9ec2375e1ac7",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 677.1938205100278,
+        "y": 462.72432490876594,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}

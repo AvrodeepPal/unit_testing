@@ -1,0 +1,701 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-27T15:27:09.551Z",
+    "modified_at": "2026-07-27T15:27:09.551Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "7z2g23bfu",
+      "node_id": "node-skin-lesion-advisor-cb383777",
+      "version_tag": "v1",
+      "title": "Skin Lesion Advisor",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": {
+                      "text": {
+                        "text": "Builds a prompt for medical information about a skin lesion using vector database retrieval.\n\nThis node constructs a prompt for an LLM to provide educational medical information about a specific skin lesion classification. It first parses the classification token (e.g., ‘mel’) from the classification output string. The user’s chosen topic (definition, identification, symptoms, recoveries, treatment, or triage) is mapped to a descriptive query phrase. The node then queries a vector database of dermatological knowledge using the token and the query phrase to retrieve the top‑five most relevant text chunks. These chunks are inserted into a structured prompt alongside the classification token and the chosen topic. The prompt instructs the LLM to answer in clear, patient‑friendly language while adhering to topic‑specific guidance (e.g., listing ABCDE criteria for identification, or describing standard interventions for treatment). A mandatory medical disclaimer is appended to the end of the prompt. The final prompt is ready for downstream LLM inference, enabling the generation of accurate, disclaimed, and context‑relevant health information for end users.",
+                        "lineHeight": 14,
+                        "fontSize": 11,
+                        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                      },
+                      "lineHeight": 14,
+                      "fontSize": 11,
+                      "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                    },
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-skin-lesion-advisor-cb383777",
+        "name": "Skin Lesion Advisor",
+        "description": "Builds a prompt for medical information about a skin lesion using vector database retrieval.\n\nThis node constructs a prompt for an LLM to provide educational medical information about a specific skin lesion classification. It first parses the classification token (e.g., ‘mel’) from the classification output string. The user’s chosen topic (definition, identification, symptoms, recoveries, treatment, or triage) is mapped to a descriptive query phrase. The node then queries a vector database of dermatological knowledge using the token and the query phrase to retrieve the top‑five most relevant text chunks. These chunks are inserted into a structured prompt alongside the classification token and the chosen topic. The prompt instructs the LLM to answer in clear, patient‑friendly language while adhering to topic‑specific guidance (e.g., listing ABCDE criteria for identification, or describing standard interventions for treatment). A mandatory medical disclaimer is appended to the end of the prompt. The final prompt is ready for downstream LLM inference, enabling the generation of accurate, disclaimed, and context‑relevant health information for end users.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-04 07:48:19.00039"
+      },
+      "constraints": [],
+      "position": {
+        "x": 635.2562121343254,
+        "y": 581.578125576715,
+        "width": 320,
+        "height": 329,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "answer",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "choice",
+            "type": [
+              "string"
+            ],
+            "value": "identification",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "definition",
+              "identification",
+              "symptoms",
+              "recoveries",
+              "treatment",
+              "triage"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "skin_lesion_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "h70837rvq",
+      "node_id": "node-skinsense-07496689",
+      "version_tag": "v1",
+      "title": "Skinsense",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": "Classifies skin lesions using an ensemble of three CNN models with patient metadata integration.\n\nThis node performs multi‑modal skin lesion classification using an ensemble of EfficientNetV2‑M, ConvNeXtV2‑Tiny, and Swin Transformer models, augmented with patient metadata (age, sex, anatomical site). It loads a pre‑trained ensemble package that contains the three image backbones and a meta‑model (e.g., logistic regression) that fuses their probability outputs with encoded metadata. The input image is resized to 560×560, normalized with ImageNet statistics, and transformed to a tensor. Age is scaled with a pre‑trained scaler; sex and site are one‑hot encoded using label encoders. Each backbone processes the image and concatenates its feature vector with processed metadata to produce class probabilities. The meta‑model then combines the three probability vectors and the raw metadata to output final probabilities across five lesion types (bcc, bkl, mel, nv, sq_spectrum). The node caches the predictor on first invocation to avoid reloading for subsequent calls. It returns a human‑readable string containing the full lesion name, short code, confidence percentage, and a risk level (low/high), enabling rapid clinical triage and decision support.",
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-skinsense-07496689",
+        "name": "Skinsense",
+        "description": "Classifies skin lesions using an ensemble of three CNN models with patient metadata integration.\n\nThis node performs multi‑modal skin lesion classification using an ensemble of EfficientNetV2‑M, ConvNeXtV2‑Tiny, and Swin Transformer models, augmented with patient metadata (age, sex, anatomical site). It loads a pre‑trained ensemble package that contains the three image backbones and a meta‑model (e.g., logistic regression) that fuses their probability outputs with encoded metadata. The input image is resized to 560×560, normalized with ImageNet statistics, and transformed to a tensor. Age is scaled with a pre‑trained scaler; sex and site are one‑hot encoded using label encoders. Each backbone processes the image and concatenates its feature vector with processed metadata to produce class probabilities. The meta‑model then combines the three probability vectors and the raw metadata to output final probabilities across five lesion types (bcc, bkl, mel, nv, sq_spectrum). The node caches the predictor on first invocation to avoid reloading for subsequent calls. It returns a human‑readable string containing the full lesion name, short code, confidence percentage, and a risk level (low/high), enabling rapid clinical triage and decision support.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-04 19:25:07.35825"
+      },
+      "constraints": [],
+      "position": {
+        "x": 583.3025227181615,
+        "y": 87.85592544229115,
+        "width": 320,
+        "height": 429,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model_path",
+            "type": [
+              "file::pth"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "image_path",
+            "type": [
+              "image::png",
+              "image::jpg",
+              "image::jpeg"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "age",
+            "type": [
+              "integer"
+            ],
+            "value": 60,
+            "modelMetadata": null,
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "gender",
+            "type": [
+              "string"
+            ],
+            "value": "male",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "male",
+              "female"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "site",
+            "type": [
+              "string"
+            ],
+            "value": "Trunk",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Trunk",
+              "Lower extremity",
+              "Upper extremity",
+              "Head and neck"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "answer",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "1ptio5bq1",
+      "node_id": "node-text-generate-(gemma)-0d5bdde2",
+      "version_tag": "v1",
+      "title": "Text Generate (Gemma)",
+      "description": {
+        "text": {
+          "text": {
+            "text": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-text-generate-(gemma)-0d5bdde2",
+        "name": "Text Generate (Gemma)",
+        "description": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+        "category": "llm_gemma",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-30 13:59:40.668862"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1012.9846693117954,
+        "y": 424.8454432868342,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "gemma::model_weights"
+            ],
+            "value": "gemma-4-E4B-it",
+            "modelMetadata": {
+              "displayName": "gemma-4-E4B-it",
+              "id": 64
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "You are a helpful assistant.",
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "enable_thinking",
+            "type": [
+              "boolean"
+            ],
+            "value": false,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 1,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.95,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 7,
+            "name": "top_k",
+            "type": [
+              "integer"
+            ],
+            "value": 64,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 8,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "iv7lols9q",
+      "source": {
+        "node_id": "h70837rvq",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "7z2g23bfu",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "by99qo678",
+      "source": {
+        "node_id": "18d9aa95-3aed-4d2b-a323-8ffb6d79c710",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "7z2g23bfu",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "1qb4wnvun",
+      "source": {
+        "node_id": "4c18fd9c-34a0-4308-9d7f-65c5dff834e2",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "h70837rvq",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "lmo32vfiv",
+      "source": {
+        "node_id": "0524fdfe-813b-4fb4-b48f-64e64723ca4c",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "h70837rvq",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "v04e6jzc0",
+      "source": {
+        "node_id": "7z2g23bfu",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "1ptio5bq1",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "rrt052uq3",
+      "node_id": "h70837rvq",
+      "port_name": "answer",
+      "position": {
+        "x": 953.0286997371702,
+        "y": 108.54568926997686,
+        "width": 420.01953954096257,
+        "height": 249.52411336848036,
+        "isCollapsed": false,
+        "expandedHeight": 249.52411336848036,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "jiy6ab3mi",
+      "node_id": "1ptio5bq1",
+      "port_name": "output",
+      "position": {
+        "x": 1415.4813582867048,
+        "y": 101.83237578720808,
+        "width": 722.9694587304557,
+        "height": 790.963028989499,
+        "isCollapsed": false,
+        "expandedHeight": 790.963028989499,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "4c18fd9c-34a0-4308-9d7f-65c5dff834e2",
+      "name": "skin1.jpg",
+      "resourceType": "file",
+      "description": "",
+      "components": {
+        "bfb6d5e6": {
+          "key": "bfb6d5e6",
+          "type": "image::jpg",
+          "value": "4c18fd9c-34a0-4308-9d7f-65c5dff834e2",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 264.3029768410807,
+        "y": 403.2705372689667,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "0524fdfe-813b-4fb4-b48f-64e64723ca4c",
+      "name": "ensemble_model.pth",
+      "resourceType": "file",
+      "description": "",
+      "components": {
+        "5d80cedc": {
+          "key": "5d80cedc",
+          "type": "file::pth",
+          "value": "0524fdfe-813b-4fb4-b48f-64e64723ca4c",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 265.43620301206465,
+        "y": 309.21276507729016,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "18d9aa95-3aed-4d2b-a323-8ffb6d79c710",
+      "name": "skin_medical_corpus",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "c4d9d448": {
+          "key": "c4d9d448",
+          "type": "vectordb",
+          "value": "18d9aa95-3aed-4d2b-a323-8ffb6d79c710",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 271.102333866985,
+        "y": 686.5770800149804,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "25b071a5-2b4d-4785-beb6-b89e5106f1fc",
+      "name": "skin2.jpg",
+      "resourceType": "file",
+      "description": "",
+      "components": {
+        "22383586": {
+          "key": "22383586",
+          "type": "image::jpg",
+          "value": "25b071a5-2b4d-4785-beb6-b89e5106f1fc",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 256.37039364419235,
+        "y": 548.3234871549258,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}

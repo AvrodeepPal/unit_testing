@@ -1,0 +1,70 @@
+Graph (workflow canvas)
+Nodes
+
+Drag a node from the Library panel onto the canvas
+Add Inline Node and Add View Node
+Node right-click menu: Duplicate, Copy, Delete
+Expand and collapse a node, and switch its input widgets on and off
+Open the node info and description panel
+Edges
+
+Connect ports, and check that type inference allows or blocks mismatched types
+Edge context menu, edge labels, edge bundling and open-edge panel
+Inspector icon on an edge, to see the data passing through it
+Transform icon on an edge, to change data on the edge
+Variables
+
+Add Variable from the Variables panel and use it in nodes
+Saved Variables: check they persist after a reload
+Variable logic in Python and JavaScript tabs, and simple conditions (variable gate)
+Shared inputs and shared value display across nodes
+Array auto-loop: feed an array into a node that takes a single item
+Run controls
+
+Run, Stop Run, and the streamed output while it runs
+Cache toggle: a rerun should reuse cached outputs
+Chain toggle
+Output renderers: string, number, boolean, array, object, image, video, file and HTML
+Sidebar panels
+
+Workflows: New workflow, switch between workflows, multiple tabs
+Files: upload a file and use it as a node input
+DBs and Vector DBs: Create Vector DB, delete it, and check it appears in the list
+APIs: Create API Key and delete an API credential
+Objects panel
+Workflow I/O
+
+Save and reload a workflow, and import/export .fork / .json
+IDE (node builder)
+Writing a node
+
+Write Python code and check that inputs, outputs and packages are detected from it
+Language selector, node ID input and version selector
+Drop assets from the explorer into the editor
+Configurators (right panel)
+
+Inputs: edit types
+Outputs: edit types
+Packages: add or pin packages (e.g. pinning torch)
+Constraints
+Capabilities: auto-inferred, then edit them
+Metadata
+Tests: Add test case and auto-generate test cases
+Node Analysis panel
+Build & load
+
+Build Node and follow the sandbox build logs
+Load Node, and its load status button
+Load node details from the backend, from local, and "Load all from backend"
+Run panel
+
+Run File, Stop Run, choose the language runtime, the packages panel and the capability panel
+Other tools
+
+File explorer: create, rename and delete files and folders
+Terminal: open, run commands, Stop Terminal
+Git: view changes, commit, create and rename branches, add a remote, push and pull, commit graph
+Models: search Hugging Face, download a model with progress shown, and the hot-model explorer
+Vector DB view and APIs view
+Agent chat: ask it to edit code and check the edits land in the editor
+Log panel

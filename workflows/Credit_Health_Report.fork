@@ -1,0 +1,710 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-24T08:34:37.723Z",
+    "modified_at": "2026-07-24T08:34:37.723Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "nm4nd5dmj",
+      "node_id": "node-user-data-fetch-cdbb8066",
+      "version_tag": "v1",
+      "title": "User Data Fetch",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": {
+                  "text": {
+                    "text": "Finds a random behavioral twin from a vector database using CIBIL bucket membership.\n\nThis node retrieves a similar user record (a “behavioral twin”) from a demo user vector database based primarily on the CIBIL score bucket. It first extracts the CIBIL value from the user profile string, converts it to a bucket (e.g., “excellent”, “very_good”, “fair”, “poor”, or “ntc” for no credit history). It then builds a retrieval query that includes the bucket and a numeric range hint (e.g., “cibil_score around 780”) to help the vector database find records with comparable scores. After querying, the node filters candidates strictly by bucket membership and randomly selects one. If no records match, it falls back to a broader query and returns an error message. This approach ensures behavioral similarity while introducing a controlled randomness suitable for simulation or A/B testing.",
+                    "lineHeight": 14,
+                    "fontSize": 11,
+                    "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                  },
+                  "lineHeight": 14,
+                  "fontSize": 11,
+                  "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+                },
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-user-data-fetch-cdbb8066",
+        "name": "User Data Fetch",
+        "description": "Finds a random behavioral twin from a vector database using CIBIL bucket membership.\n\nThis node retrieves a similar user record (a “behavioral twin”) from a demo user vector database based primarily on the CIBIL score bucket. It first extracts the CIBIL value from the user profile string, converts it to a bucket (e.g., “excellent”, “very_good”, “fair”, “poor”, or “ntc” for no credit history). It then builds a retrieval query that includes the bucket and a numeric range hint (e.g., “cibil_score around 780”) to help the vector database find records with comparable scores. After querying, the node filters candidates strictly by bucket membership and randomly selects one. If no records match, it falls back to a broader query and returns an error message. This approach ensures behavioral similarity while introducing a controlled randomness suitable for simulation or A/B testing.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-26 14:50:24.601643"
+      },
+      "constraints": [],
+      "position": {
+        "x": 695.5139397444076,
+        "y": 80.6713242419467,
+        "width": 320,
+        "height": 279,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "demo_user_records",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "candidate",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "i6m4n7xqf",
+      "node_id": "node-accept-user-cibil-data-524091fa",
+      "version_tag": "v1",
+      "title": "Accept User CIBIL Data",
+      "description": {
+        "text": {
+          "text": {
+            "text": "Validates and formats employment, income, dependents, and CIBIL into a pipe‑separated profile string for Credit Health Report Generation.\n\nThis node acts as a validation gate for user financial data. It checks that all four required fields (employment type, income range, number of dependents, and CIBIL score) are present and non‑empty. If any field is missing or contains the string “none”, the node returns an empty string, signaling incomplete data. Otherwise, it formats the values into a standardized pipe‑separated string (Emp: ... | Inc: ... | Dep: ... | CIBIL: ...). This consistent format allows downstream nodes to reliably parse user information without repeated validation logic.",
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-accept-user-cibil-data-524091fa",
+        "name": "Accept User CIBIL Data",
+        "description": "Validates and formats employment, income, dependents, and CIBIL into a pipe‑separated profile string for Credit Health Report Generation.\n\nThis node acts as a validation gate for user financial data. It checks that all four required fields (employment type, income range, number of dependents, and CIBIL score) are present and non‑empty. If any field is missing or contains the string “none”, the node returns an empty string, signaling incomplete data. Otherwise, it formats the values into a standardized pipe‑separated string (Emp: ... | Inc: ... | Dep: ... | CIBIL: ...). This consistent format allows downstream nodes to reliably parse user information without repeated validation logic.",
+        "category": "finance",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-26 13:33:39.418713"
+      },
+      "constraints": [],
+      "position": {
+        "x": 276.77375414467036,
+        "y": 73.26839905232535,
+        "width": 320,
+        "height": 379,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "emp_type",
+            "type": [
+              "string"
+            ],
+            "value": "Salaried - MNC / Listed",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Govt / PSU",
+              "Salaried - MNC / Listed",
+              "Salaried - Private / Other",
+              "Self-Employed Professional",
+              "Self-Employed Business",
+              "Pensioner / Retired",
+              "Contract / Gig",
+              "Student / Unemployed"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "income_range",
+            "type": [
+              "string"
+            ],
+            "value": "5L - 10L",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "< 3L",
+              "3L - 5L",
+              "5L - 10L",
+              "10L - 15L",
+              "15L - 25L",
+              "> 25L"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "dependents",
+            "type": [
+              "string"
+            ],
+            "value": "2",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "0-1",
+              "2",
+              "3",
+              ">3"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "cibil_score",
+            "type": [
+              "integer"
+            ],
+            "value": 780,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "kx43us1rs",
+      "node_id": "node-credit-health-report-a51e5e2c",
+      "version_tag": "v1",
+      "title": "Credit Health Report",
+      "description": {
+        "text": {
+          "text": "Constructs a prompt for credit scoring with internal component scoring for credit health scorecard.\n\nThis node builds a prompt for an LLM to compute a Credit Health Score using a provided scorecard. It parses the user profile (employment, income, dependents, CIBIL) and a matched behavioral record that contains proxy metrics (e.g., FOIR, utilization, DPD). The prompt includes a distortion detection mechanism: if the proxy’s FOIR exceeds 70% or utilization exceeds 80%, it adds a 50% penalty scaling note. The LLM is instructed to compute all 11 components internally (maximum total 100) but NEVER reveal the breakdown in the output. The final output must follow a strict template: a numeric score, a category, a two‑line summary, three positive factors, three negative factors, two improvement actions, and a lender verdict. This design protects proprietary scoring logic while delivering actionable insights.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-credit-health-report-a51e5e2c",
+        "name": "Credit Health Report",
+        "description": "Constructs a prompt for credit scoring with internal component scoring for credit health scorecard.\n\nThis node builds a prompt for an LLM to compute a Credit Health Score using a provided scorecard. It parses the user profile (employment, income, dependents, CIBIL) and a matched behavioral record that contains proxy metrics (e.g., FOIR, utilization, DPD). The prompt includes a distortion detection mechanism: if the proxy’s FOIR exceeds 70% or utilization exceeds 80%, it adds a 50% penalty scaling note. The LLM is instructed to compute all 11 components internally (maximum total 100) but NEVER reveal the breakdown in the output. The final output must follow a strict template: a numeric score, a category, a two‑line summary, three positive factors, three negative factors, two improvement actions, and a lender verdict. This design protects proprietary scoring logic while delivering actionable insights.",
+        "category": "finance",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-26 14:53:04.473722"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1054.222635218089,
+        "y": 75.23503134817403,
+        "width": 320,
+        "height": 329,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "matched_record",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "scorecard_text",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "u1u5v710p",
+      "node_id": "node-context-generator-(qwen)-17f7f580",
+      "version_tag": "v1",
+      "title": "Text Generate (Qwen)",
+      "description": {
+        "text": {
+          "text": "This node performs text generation using a preloaded Qwen language model, converting an input prompt into a coherent natural language response. The model and its tokenizer are already provided by the wrapper, so the node focuses on preparing inputs and executing generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU for faster inference). The node then calls the model’s generate method, applying configurable sampling parameters such as temperature (controls randomness), top_p (nucleus sampling), and max_new_tokens (response length). These settings allow fine control over creativity, diversity, and output size.\n\nOnce generation is complete, the output tokens are decoded back into readable text, with special tokens removed. The final result is a clean text string representing the model’s response to the given prompt.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(qwen)-17f7f580",
+        "name": "Text Generate (Qwen)",
+        "description": "This node performs text generation using a preloaded Qwen language model, converting an input prompt into a coherent natural language response. The model and its tokenizer are already provided by the wrapper, so the node focuses on preparing inputs and executing generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU for faster inference). The node then calls the model’s generate method, applying configurable sampling parameters such as temperature (controls randomness), top_p (nucleus sampling), and max_new_tokens (response length). These settings allow fine control over creativity, diversity, and output size.\n\nOnce generation is complete, the output tokens are decoded back into readable text, with special tokens removed. The final result is a clean text string representing the model’s response to the given prompt.",
+        "category": "llm_qwen",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:34:22.529254"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1427.9034687936455,
+        "y": 60.864042113934914,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "qwen25::model_weights"
+            ],
+            "value": "Qwen2.5-14B-Instruct",
+            "modelMetadata": {
+              "displayName": "Qwen2.5-14B-Instruct",
+              "id": 35
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "m4icy8dyi",
+      "source": {
+        "node_id": "1b005f4f-95d1-497e-8f68-187f6c3ea6b7",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "nm4nd5dmj",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "efaa0ql1i",
+      "source": {
+        "node_id": "i6m4n7xqf",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "nm4nd5dmj",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "mjrgxaup9",
+      "source": {
+        "node_id": "kx43us1rs",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "u1u5v710p",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "phfw387fm",
+      "source": {
+        "node_id": "nm4nd5dmj",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "kx43us1rs",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "66qbgoe0e",
+      "source": {
+        "node_id": "i6m4n7xqf",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "kx43us1rs",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "5kd1wb65c",
+      "source": {
+        "node_id": "01dfee1b-ffb5-4548-9453-a0f01c41121f",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "kx43us1rs",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "zigakpo97",
+      "node_id": "i6m4n7xqf",
+      "port_name": "user_profile",
+      "position": {
+        "x": 260.775519216204,
+        "y": 499.99892522875945,
+        "width": 400,
+        "height": 400,
+        "isCollapsed": false,
+        "expandedHeight": 400,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "5h5ocm59h",
+      "node_id": "nm4nd5dmj",
+      "port_name": "candidate",
+      "position": {
+        "x": 701.292238231806,
+        "y": 501.6738937421268,
+        "width": 400,
+        "height": 400,
+        "isCollapsed": false,
+        "expandedHeight": 400,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "abubn831f",
+      "node_id": "kx43us1rs",
+      "port_name": "prompt",
+      "position": {
+        "x": 1129.3551696106015,
+        "y": 497.30337826560447,
+        "width": 400,
+        "height": 400,
+        "isCollapsed": false,
+        "expandedHeight": 400,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "r2fts4yqa",
+      "node_id": "u1u5v710p",
+      "port_name": "output",
+      "position": {
+        "x": 1782.3551696106015,
+        "y": 57.303378265604465,
+        "width": 718,
+        "height": 803,
+        "isCollapsed": false,
+        "expandedHeight": 803,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "1b005f4f-95d1-497e-8f68-187f6c3ea6b7",
+      "name": "demo_records",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "89955304": {
+          "key": "89955304",
+          "type": "vectordb",
+          "value": "1b005f4f-95d1-497e-8f68-187f6c3ea6b7",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 617.1873691170579,
+        "y": 387.5657581749108,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "01dfee1b-ffb5-4548-9453-a0f01c41121f",
+      "name": "credit_health_scorecard",
+      "resourceType": "variable",
+      "description": "",
+      "components": {
+        "e609a7dd": {
+          "type": "string",
+          "value": "# CREDIT HEALTH SCORECARD - OVERVIEW  This scorecard assigns each customer a credit health score on a 0-100 scale by weighting 11 score components built from CIBIL bureau data, on-book obligations, and demographic stability. The score maps to one of five categories: Excellent, Very Good, Good, Needs Improvement, or Poor.  Weighting reflects best practice for unsecured retail lending: payment behaviour and CIBIL score dominate, followed by current leverage (utilization & FOIR), depth of credit history, recent credit hunger, and demographic stability factors.  Total weight = 100.  ---  # COMPONENT WEIGHTS (Total = 100)  CIBIL Score: 25 points Worst DPD (last 12 months): 15 points Has 90+ Default (ever): 10 points Revolving Utilization %: 10 points FOIR %: 10 points Total Tradelines: 3 points Active Tradelines: 2 points Oldest Tradeline (months): 5 points Enquiries (last 6 months): 5 points Employment Type: 6 points Income Range (annual INR): 6 points Dependencies in Family: 3 points  Why each matters: - CIBIL Score: Bureau score - composite payment & leverage signal - Worst DPD: Highest delinquency in last 12 months (days past due) - 90+ Default: Any loan ever 90+ DPD or written off - Revolving Utilization %: Card balance / card limit - FOIR %: Total monthly EMI / monthly income - Total Tradelines: Count of all credit accounts (open + closed) - Active Tradelines: Currently open / live tradelines - Oldest Tradeline: Age in months of the oldest credit account - Enquiries: Count of bureau enquiries in last 6 months - Employment Type: Stability of income source - Income Range: Annual gross household income - Dependencies: Number of financial dependents  ---  # SCORECARD INPUT EXAMPLE (Sample Customer)  Assessment Date: 25-Apr-2026  Input Variable | Customer Value | Weight | Score Earned CIBIL Score: 750 | 25 | 22.0 Total Tradelines: 5 | 3 | 3.0 Active Tradelines: 3 | 2 | 2.0 Total Credit Limit (INR): 500,000 | - | - Total Card Balance (INR): 100,000 | - | - Revolving Utilization %: 20.0 | 10 | 8.0 Total Monthly EMI (INR): 25,000 | - | - FOIR %: 35.0 | 10 | 8.0 Worst DPD (last 12m): 2 | 15 | 10.0 Has 90+ Default (Yes/No): Yes | 10 | 0.0 Enquiries (last 6m): 1 | 5 | 5.0 Oldest Tradeline (months): 60 | 5 | 4.0 Employment Type: Salaried - Private / Other | 6 | 5.0 Income Range (Annual): 5 - 10 Lakh | 6 | 3.0 Dependencies in Family: 2 | 3 | 2.0  Sanity Checks: - Utilization computed (Balance / Limit): 20.0% (Match) - FOIR computed (EMI / Income mid-point): 40.0% (Check FOIR %)  RESULT: Weight Sum: 100 TOTAL SCORE (out of 100): 72.0 CATEGORY: Very Good Recommendation: Strong profile. Approve with competitive pricing.  ---  # LOOKUP TABLES FOR SCORING  ## CIBIL Score - Max points: 25 Min Score | Max Score | Points | Band 800 | 900 | 25 | Excellent 750 | 799 | 22 | Very Good 720 | 749 | 18 | Good 700 | 719 | 14 | Acceptable 650 | 699 | 10 | Sub-prime 600 | 649 | 5 | Weak 300 | 599 | 0 | Very Weak / NH / NA  Note: If CIBIL is NTC (New to Credit) or NH/NA, treat as score 300 (0 points).  ## Worst DPD (last 12 months) - Max points: 15 DPD Days | Points | Band 0 | 15 | No delinquency 1-29 | 10 | Mild bucket 30-59 | 5 | 30+ DPD 60-89 | 2 | 60+ DPD 90+ | 0 | 90+ DPD  ## Has 90+ Default (ever) - Max points: 10 Value | Points | Band No | 10 | No major default Yes | 0 | Major default flagged  ## Revolving Utilization % - Max points: 10 Utilization % | Points | Band 0-9.99% | 10 | Very low 10-29.99% | 8 | Low 30-49.99% | 6 | Moderate 50-74.99% | 3 | High 75-89.99% | 1 | Very high 90%+ | 0 | Maxed out  ## FOIR % - Max points: 10 FOIR % | Points | Band 0-29.99% | 10 | Very comfortable 30-39.99% | 8 | Comfortable 40-49.99% | 5 | Moderate 50-59.99% | 2 | Stretched 60%+ | 0 | Over-leveraged  ## Total Tradelines - Max points: 3 Min | Max | Points | Band 0 | 0 | 0 | New to credit 1 | 2 | 1 | Thin 3 | 4 | 2 | Moderate 5+ | - | 3 | Deep history  ## Active Tradelines - Max points: 2 Min | Max | Points | Band 0 | 0 | 0 | None active 1 | 4 | 2 | Healthy mix 5+ | - | 1 | Possibly over-leveraged  Note: Total Tradelines + Active Tradelines together contribute 5 points to the total score (3+2).  ## Oldest Tradeline (months) - Max points: 5 Months | Points | Band 120+ | 5 | 10+ years 60-119 | 4 | 5-10 years 36-59 | 3 | 3-5 years 12-35 | 2 | 1-3 years 1-11 | 1 | < 1 year 0 | 0 | New to credit  ## Enquiries Last 6 Months - Max points: 5 Enquiries | Points | Band 0-1 | 5 | No credit hunger 2-3 | 4 | Low 4-5 | 2 | Moderate 6-7 | 1 | High 8+ | 0 | Very high  ## Employment Type - Max points: 6 Type | Points Govt / PSU | 6 Salaried - MNC / Listed | 6 Salaried - Private / Other | 5 Self-Employed Professional | 5 Self-Employed Business | 4 Pensioner / Retired | 3 Contract / Gig | 2 Student / Unemployed | 1  ## Income Range - Annual INR - Max points: 6 Range | Points > 25 Lakh | 6 15 - 25 Lakh | 5 10 - 15 Lakh | 4 5 - 10 Lakh | 3 3 - 5 Lakh | 2 < 3 Lakh | 1  ## Dependencies in Family - Max points: 3 Dependencies | Points 0-1 (None or 1) | 3 2 | 2 3 | 1 4+ | 0  ---  # CATEGORY CUTOFFS  Min Score | Max Score | Category | Interpretation 85 | 100 | Excellent | Top-tier credit health - lowest risk profile, eligible for premium products 70 | 84 | Very Good | Strong profile - approve at competitive pricing 55 | 69 | Good | Acceptable - approve with standard terms or moderate pricing 40 | 54 | Needs Improvement | Marginal - consider lower limit, secure collateral, or co-applicant 0 | 39 | Poor | High risk - decline or refer to specialised underwriting  ---  # HOW TO USE THIS SCORECARD  1. Enter the customer's values into the input fields (CIBIL score, DPD, utilization, FOIR, total tradelines, active tradelines, oldest account, enquiries, employment type, income range, dependencies). 2. Calculate component scores using the lookup tables above. 3. Sum all component scores (max 100). 4. Map total score to category using the cutoffs table. 5. Output: Total score (0-100) + Category + Recommendation.",
+          "const": false,
+          "internal": false
+        }
+      },
+      "position": {
+        "x": 844.1873691170579,
+        "y": 387.5657581749108,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}

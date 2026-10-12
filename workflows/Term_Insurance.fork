@@ -1,0 +1,1411 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-24T08:57:05.088Z",
+    "modified_at": "2026-07-24T08:57:05.088Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "0oltgd37q",
+      "node_id": "node-accept-term-profile-c3e18352",
+      "version_tag": "v1",
+      "title": "Accept Term Profile",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": "Formats term life insurance eligibility inputs into a pipe‑delimited profile string.\n\nThis node maps raw user inputs for term life insurance into a standardized pipe‑separated string. It takes twelve parameters including age, gender, tobacco usage, marital status, dependents count, annual income, desired sum assured (in crores), policy term (in years), and boolean preferences for return of premium, critical illness rider, and retirement planning. The node automatically sets the SeniorCitizen flag to True if the age is 60 or older. All inputs are used as provided (without validation) and assembled into a format like Age: <value> | Gender: <value> | TobaccoUser: <value> | .... This clean, parseable output enables downstream nodes to reliably extract user attributes for term insurance policy filtering and scoring.",
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-accept-term-profile-c3e18352",
+        "name": "Accept Term Profile",
+        "description": "Formats term life insurance eligibility inputs into a pipe‑delimited profile string.\n\nThis node maps raw user inputs for term life insurance into a standardized pipe‑separated string. It takes twelve parameters including age, gender, tobacco usage, marital status, dependents count, annual income, desired sum assured (in crores), policy term (in years), and boolean preferences for return of premium, critical illness rider, and retirement planning. The node automatically sets the SeniorCitizen flag to True if the age is 60 or older. All inputs are used as provided (without validation) and assembled into a format like Age: <value> | Gender: <value> | TobaccoUser: <value> | .... This clean, parseable output enables downstream nodes to reliably extract user attributes for term insurance policy filtering and scoring.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:41:00.548825"
+      },
+      "constraints": [],
+      "position": {
+        "x": 267.90131101460497,
+        "y": 61.89657426522723,
+        "width": 320,
+        "height": 779,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "age",
+            "type": [
+              "integer"
+            ],
+            "value": 30,
+            "modelMetadata": null,
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "gender",
+            "type": [
+              "string"
+            ],
+            "value": "male",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "male",
+              "female"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "tobacco_user",
+            "type": [
+              "string"
+            ],
+            "value": "false",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "marital_status",
+            "type": [
+              "string"
+            ],
+            "value": "single",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "single",
+              "married"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "dependents_count",
+            "type": [
+              "string"
+            ],
+            "value": "2",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "0-1",
+              "2",
+              "3",
+              "> 3"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "annual_income_lakhs",
+            "type": [
+              "string"
+            ],
+            "value": "10L-20L",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "5L-10L",
+              "10L-20L",
+              "20L-30L",
+              "30L-50L",
+              "50L-1Cr",
+              ">1Cr"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "desired_sum_assured_crore",
+            "type": [
+              "string"
+            ],
+            "value": "1Cr",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "1Cr",
+              "2Cr",
+              "3Cr",
+              "5Cr"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 7,
+            "name": "desired_policy_term_years",
+            "type": [
+              "string"
+            ],
+            "value": "40yrs",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "10yrs",
+              "20yrs",
+              "30yrs",
+              "40yrs",
+              "upto 90yrs"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 8,
+            "name": "want_rop",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 9,
+            "name": "want_critical_illness",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 10,
+            "name": "planning_retirement",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 11,
+            "name": "premium_pay_mode",
+            "type": [
+              "string"
+            ],
+            "value": "Regular",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "Lump Sum",
+              "Regular",
+              "Payout"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "profile",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "6vku4l0lb",
+      "node_id": "node-term-profile-shortlist-0a91ce72",
+      "version_tag": "v1",
+      "title": "Term Profile Shortlist",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": "Retrieves term insurance policy excerpts and builds a prompt for LLM to rank the top 5 plans.\n\nThis node creates a prompt for an LLM to shortlist the five best term life insurance policies for a user, using only the user profile, a scorecard, and vector database retrieval. It first parses the user profile to extract key attributes (desired sum assured, policy term, critical illness rider, return of premium preference) and constructs a retrieval query combining these terms with \"term life insurance India\" and \"features benefits premium exclusions\". The node queries the insurance vector database with top_k=40 to obtain relevant policy excerpts, then inserts these together with the user profile and the scorecard (containing rubrics, hard filters, and weights) into a structured prompt. The LLM is instructed to apply hard filters, compute seven criterion scores (0‑10) for each policy, apply profile‑adaptive weights, drop ineligible policies, and output exactly the top five plans in a strict TOP_5_READY format. This ensures a transparent, data‑driven shortlist for term life insurance.",
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-term-profile-shortlist-0a91ce72",
+        "name": "Term Profile Shortlist",
+        "description": "Retrieves term insurance policy excerpts and builds a prompt for LLM to rank the top 5 plans.\n\nThis node creates a prompt for an LLM to shortlist the five best term life insurance policies for a user, using only the user profile, a scorecard, and vector database retrieval. It first parses the user profile to extract key attributes (desired sum assured, policy term, critical illness rider, return of premium preference) and constructs a retrieval query combining these terms with \"term life insurance India\" and \"features benefits premium exclusions\". The node queries the insurance vector database with top_k=40 to obtain relevant policy excerpts, then inserts these together with the user profile and the scorecard (containing rubrics, hard filters, and weights) into a structured prompt. The LLM is instructed to apply hard filters, compute seven criterion scores (0‑10) for each policy, apply profile‑adaptive weights, drop ineligible policies, and output exactly the top five plans in a strict TOP_5_READY format. This ensures a transparent, data‑driven shortlist for term life insurance.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:43:40.869328"
+      },
+      "constraints": [],
+      "position": {
+        "x": 634.2021779428125,
+        "y": 60.74495904262744,
+        "width": 320,
+        "height": 329,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "scorecard_data",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "insurance_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "6c12d5wtb",
+      "node_id": "node-accept-term-lifestyle-e483b6dd",
+      "version_tag": "v1",
+      "title": "Accept Term Lifestyle",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": "Normalizes term insurance lifestyle preferences and importance ratings into a pipe‑delimited string.\n\nThis node transforms user lifestyle and preference inputs for term life insurance into a standardized pipe‑separated string. It accepts twelve parameters: existing policy details, annual budget for premiums, medical underwriting willingness, payout preference (lump sum or income option), want income option, and importance ratings (low/medium/high) for seven criteria: claim settlement ratio, premium competitiveness, maximum sum assured, age range flexibility, riders and benefits, premium payment flexibility, and insurer solvency and trust. The node provides defaults for missing values (e.g., \"none\" for existing policy, \"not_specified\" for budget) and assembles the string with labels like ExistingPolicy, BudgetAnnual, MedicalUnderwriting, PayoutPref, and ImpClaimSettlement. This structured output allows downstream recommendation engines to incorporate the user's stated priorities when ranking and recommending term insurance policies.",
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-accept-term-lifestyle-e483b6dd",
+        "name": "Accept Term Lifestyle",
+        "description": "Normalizes term insurance lifestyle preferences and importance ratings into a pipe‑delimited string.\n\nThis node transforms user lifestyle and preference inputs for term life insurance into a standardized pipe‑separated string. It accepts twelve parameters: existing policy details, annual budget for premiums, medical underwriting willingness, payout preference (lump sum or income option), want income option, and importance ratings (low/medium/high) for seven criteria: claim settlement ratio, premium competitiveness, maximum sum assured, age range flexibility, riders and benefits, premium payment flexibility, and insurer solvency and trust. The node provides defaults for missing values (e.g., \"none\" for existing policy, \"not_specified\" for budget) and assembles the string with labels like ExistingPolicy, BudgetAnnual, MedicalUnderwriting, PayoutPref, and ImpClaimSettlement. This structured output allows downstream recommendation engines to incorporate the user's stated priorities when ranking and recommending term insurance policies.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:55:43.571752"
+      },
+      "constraints": [],
+      "position": {
+        "x": 635.2165439087454,
+        "y": 430.418349084189,
+        "width": 320,
+        "height": 779,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "existing_policy",
+            "type": [
+              "string"
+            ],
+            "value": "None",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "budget_annual_premium",
+            "type": [
+              "string"
+            ],
+            "value": "Rs5000 - Rs10000",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "< Rs5000",
+              "Rs5000 - Rs10000",
+              "Rs10000 - Rs25000",
+              "> Rs25000"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "medical_underwriting_willingness",
+            "type": [
+              "string"
+            ],
+            "value": "non_medical_upto_50L",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "full_medical",
+              "non_medical_upto_50L",
+              "non_medical_upto_1Cr",
+              "tele_underwriting"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "payout_preference",
+            "type": [
+              "string"
+            ],
+            "value": "monthly_income",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "lump_sum",
+              "monthly_income",
+              "combination"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "want_income_option",
+            "type": [
+              "string"
+            ],
+            "value": "true",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "true",
+              "false"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 5,
+            "name": "imp_claim_settlement",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 6,
+            "name": "imp_premium_competitive",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 7,
+            "name": "imp_max_sum_assured",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 8,
+            "name": "imp_age_range",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 9,
+            "name": "imp_riders",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 10,
+            "name": "imp_premium_flexibility",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 11,
+            "name": "imp_solvency_trust",
+            "type": [
+              "string"
+            ],
+            "value": "medium",
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "low",
+              "medium",
+              "high"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "lifestyle",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "gxd3nw54i",
+      "node_id": "node-term-insurance-recommendation-b0ba433c",
+      "version_tag": "v1",
+      "title": "Term Insurance Recommendation",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": "Retrieves full policy texts for the top 3 shortlisted plans and builds a detailed term insurance recommendation prompt.\n\nThis node prepares a comprehensive prompt for an LLM to produce the single best term life insurance recommendation from a shortlist. It first parses the shortlisted policies (from the previous LLM output) to extract the names of the top three plans. For each of these, it queries the insurance vector database to retrieve detailed policy texts, riders, and exclusions (up to 12 chunks per policy), and concatenates them into a rich context block. The node then builds an elaborate prompt that includes the full user profile, user preferences with importance ratings (extracted from the lifestyle string), the shortlisted plans, the retrieved policy documents, and the scorecard data (rubrics and weights). The LLM is instructed to re‑validate eligibility, compute final weighted scores, use the importance ratings as qualitative tie‑breakers, and perform a comparative analysis of the three plans. It must then select the best plan, justify with specific evidence from the policy texts, highlight trade‑offs honestly, and suggest an alternative. The output follows a strict format (BEST_PLAN, WHY THIS PLAN, TRADE-OFFS, ALTERNATIVE) with no extra text, ensuring a clear, actionable, and evidence‑based recommendation for term life insurance.",
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-term-insurance-recommendation-b0ba433c",
+        "name": "Term Insurance Recommendation",
+        "description": "Retrieves full policy texts for the top 3 shortlisted plans and builds a detailed term insurance recommendation prompt.\n\nThis node prepares a comprehensive prompt for an LLM to produce the single best term life insurance recommendation from a shortlist. It first parses the shortlisted policies (from the previous LLM output) to extract the names of the top three plans. For each of these, it queries the insurance vector database to retrieve detailed policy texts, riders, and exclusions (up to 12 chunks per policy), and concatenates them into a rich context block. The node then builds an elaborate prompt that includes the full user profile, user preferences with importance ratings (extracted from the lifestyle string), the shortlisted plans, the retrieved policy documents, and the scorecard data (rubrics and weights). The LLM is instructed to re‑validate eligibility, compute final weighted scores, use the importance ratings as qualitative tie‑breakers, and perform a comparative analysis of the three plans. It must then select the best plan, justify with specific evidence from the policy texts, highlight trade‑offs honestly, and suggest an alternative. The output follows a strict format (BEST_PLAN, WHY THIS PLAN, TRADE-OFFS, ALTERNATIVE) with no extra text, ensuring a clear, actionable, and evidence‑based recommendation for term life insurance.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-06-24 15:59:37.742387"
+      },
+      "constraints": [],
+      "position": {
+        "x": 997.0761882140141,
+        "y": 461.05190471413385,
+        "width": 320,
+        "height": 429,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "user_profile",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_lifestyle",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "shortlisted_policies",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 3,
+            "name": "insurance_db",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 4,
+            "name": "scorecard_data",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "4gne4uhpz",
+      "node_id": "node-context-generator-(mistral)-9bc89c39",
+      "version_tag": "v1",
+      "title": "Text Generate (Mistral)",
+      "description": {
+        "text": {
+          "text": {
+            "text": "This node performs text generation using a preloaded Mistral language model, turning an input prompt into a coherent response with configurable decoding behavior. The model and tokenizer are already provided by the wrapper, so the node focuses on preparing inputs and executing generation.\n\nIt first ensures the model has a valid GenerationConfig, initializing one from the model configuration if needed. The input prompt is then tokenized with padding and truncation, and all tensors are moved to the correct device for efficient inference.\n\nThe node calls the model’s generate method with parameters such as max_new_tokens (controls output length), temperature and top_p (control randomness and diversity), and do_sample (switches between deterministic and sampling-based generation). After generation, the output tokens are decoded into readable text with special tokens removed.\n\nThe final result is a clean text string representing the model’s response, ready for use in chat, completion, or downstream processing tasks.",
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(mistral)-9bc89c39",
+        "name": "Text Generate (Mistral)",
+        "description": "This node performs text generation using a preloaded Mistral language model, turning an input prompt into a coherent response with configurable decoding behavior. The model and tokenizer are already provided by the wrapper, so the node focuses on preparing inputs and executing generation.\n\nIt first ensures the model has a valid GenerationConfig, initializing one from the model configuration if needed. The input prompt is then tokenized with padding and truncation, and all tensors are moved to the correct device for efficient inference.\n\nThe node calls the model’s generate method with parameters such as max_new_tokens (controls output length), temperature and top_p (control randomness and diversity), and do_sample (switches between deterministic and sampling-based generation). After generation, the output tokens are decoded into readable text with special tokens removed.\n\nThe final result is a clean text string representing the model’s response, ready for use in chat, completion, or downstream processing tasks.",
+        "category": "llm_mistral",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 16:27:20.014814"
+      },
+      "constraints": [],
+      "position": {
+        "x": 1001.6993736716333,
+        "y": 50.99349378081527,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "mistral::model_weights"
+            ],
+            "value": "Mistral-7B-Instruct-v0.3",
+            "modelMetadata": {
+              "displayName": "Mistral-7B-Instruct-v0.3",
+              "id": 46
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "59ndkgp2m",
+      "node_id": "node-text-generate-(gemma)-0d5bdde2",
+      "version_tag": "v1",
+      "title": "Text Generate (Gemma)",
+      "description": {
+        "text": {
+          "text": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-text-generate-(gemma)-0d5bdde2",
+        "name": "Text Generate (Gemma)",
+        "description": "This node performs text-only chat generation using a Gemma-style language model with structured conversation formatting. It supports both standard responses and optional “thinking” mode for more reasoning-oriented outputs.\nThe node constructs a chat-style input using a system prompt and user prompt, then formats it with the processor’s apply_chat_template, which prepares the text in the model’s expected conversational format. An optional enable_thinking flag can be used to activate internal reasoning behaviors (if supported by the model).\nThe formatted input is tokenized and sent to the model for generation using configurable sampling parameters:\n\n\nmax_new_tokens → controls response length\n\n\ntemperature, top_p, top_k → control randomness and diversity\n\n\ndo_sample → enables probabilistic generation\n\n\nAfter generation, only the newly generated portion (excluding the prompt) is decoded. The processor then parses the raw output into a clean final response, handling any structured formatting specific to Gemma models.\nThe result is a well-structured assistant reply, suitable for chat, reasoning tasks, or general text generation workflows.",
+        "category": "llm_gemma",
+        "owner_id": "112361794260852586879",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-04-30 13:59:40.668862"
+      },
+      "constraints": [],
+      "position": {
+        "x": 996.0793323317389,
+        "y": 923.3737577801352,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "gemma::model_weights"
+            ],
+            "value": "gemma-4-E4B-it",
+            "modelMetadata": {
+              "displayName": "gemma-4-E4B-it",
+              "id": 64
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "You are a helpful assistant.",
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "enable_thinking",
+            "type": [
+              "boolean"
+            ],
+            "value": false,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 1,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.95,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 7,
+            "name": "top_k",
+            "type": [
+              "integer"
+            ],
+            "value": 64,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 8,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "vh4fji71e",
+      "source": {
+        "node_id": "0oltgd37q",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "6vku4l0lb",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "kp4iu92ix",
+      "source": {
+        "node_id": "0oltgd37q",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "gxd3nw54i",
+        "port_index": 0,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "ku9amaj1b",
+      "source": {
+        "node_id": "6c12d5wtb",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "gxd3nw54i",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "t7l7jkxs2",
+      "source": {
+        "node_id": "955d9fe0-bb3f-43f1-ab2b-26e89f9675e2",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "6vku4l0lb",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "wblsd1wx1",
+      "source": {
+        "node_id": "955d9fe0-bb3f-43f1-ab2b-26e89f9675e2",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "gxd3nw54i",
+        "port_index": 3,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "41ktj3kky",
+      "source": {
+        "node_id": "40fec293-72dc-4214-88f0-3d2934621230",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "gxd3nw54i",
+        "port_index": 4,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "jaitikibt",
+      "source": {
+        "node_id": "40fec293-72dc-4214-88f0-3d2934621230",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "6vku4l0lb",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "7yagx0iqr",
+      "source": {
+        "node_id": "6vku4l0lb",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "4gne4uhpz",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "v43ut6bo0",
+      "source": {
+        "node_id": "4gne4uhpz",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "gxd3nw54i",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "piw05ruoc",
+      "source": {
+        "node_id": "gxd3nw54i",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "59ndkgp2m",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "2sgunlogf",
+      "node_id": "4gne4uhpz",
+      "port_name": "output",
+      "position": {
+        "x": 1363.6666016922736,
+        "y": 56.24828599291604,
+        "width": 681.6036126219105,
+        "height": 344.3537771465686,
+        "isCollapsed": false,
+        "expandedHeight": 344.3537771465686,
+        "collapsedHeight": 40
+      },
+      "data": null
+    },
+    {
+      "id": "cl6b84290",
+      "node_id": "59ndkgp2m",
+      "port_name": "output",
+      "position": {
+        "x": 1372.6127227702486,
+        "y": 430.03589635773574,
+        "width": 821.2850896537161,
+        "height": 862.3860740101762,
+        "isCollapsed": false,
+        "expandedHeight": 862.3860740101762,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "955d9fe0-bb3f-43f1-ab2b-26e89f9675e2",
+      "name": "term_insurance_data",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "100fe86f": {
+          "key": "100fe86f",
+          "type": "vectordb",
+          "value": "955d9fe0-bb3f-43f1-ab2b-26e89f9675e2",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 336.740852669857,
+        "y": 880.8241337301273,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    },
+    {
+      "id": "40fec293-72dc-4214-88f0-3d2934621230",
+      "name": "term_insurance_scorecard",
+      "resourceType": "variable",
+      "description": "",
+      "components": {
+        "f86821d4": {
+          "type": "string",
+          "value": "# TERM INSURANCE SCORECARD – v1.0  ## RUBRICS (0–10 per criterion)  ### 1. Claim Settlement Ratio (CSR by count) Direct map from market_stats.csr_by_count_pct:   ≥99.5%   → 10   99-99.5% → 9   98-99%   → 8   97-98%   → 7   95-97%   → 6   92-95%   → 5   90-92%   → 4   <90%     → 2  ### 2. Premium Competitiveness Benchmark = annual premium for 30-year-old male non-smoker, ₹1 Cr sum assured, 30-year regular pay. Median of all policies in the table = ₹9,600 (2024 IRDAI reference). Score mapping:   ≤75% of median  → 10   ≤85% of median  → 8   ≤100% of median → 6   ≤115% of median → 4   >115% of median → 2  ### 3. Max Sum Assured (crore)   ≥50      → 10   25-50    → 9   10-25    → 8   5-10     → 6   2-5      → 4   <2       → 2 Bonus: +1 if HNI cover (≥10 Cr) offered without medical (if noted in notes)  ### 4. Entry / Maturity Age Range entry_score (max entry age):   ≥70 → 5, 60-69 → 4, 55-59 → 3, 50-54 → 2, <50 → 1 maturity_score (max maturity age):   ≥99 → 5, 85-98 → 4, 75-84 → 3, 65-74 → 2, <65 → 1 total = entry + maturity, capped at 10.  ### 5. Riders & Optional Benefits Each Y adds:   critical_illness_rider → 3   accidental_death_rider → 2   waiver_of_premium      → 2   permanent_disability   → 2   terminal_illness_inbuilt → 1   step_up_option         → 1   premium_break          → 1 Cap at 10.  ### 6. Premium Payment Flexibility Each Y adds:   regular_pay   → 2   limited_pay   → 2 (any limited pay option)   single_pay    → 1   return_of_premium → 2   premium_break → 1   modal_flex    → 1 (assume Y for all) Cap at 10.  ### 7. Insurer Solvency & Trust solvency_score (solvency_ratio):   ≥2.50 → 4, 2.00-2.50 → 3, 1.80-2.00 → 2, 1.50-1.80 → 1, <1.50 → 0 longevity_score (years_in_india):   ≥20 → 3, 10-20 → 2, 5-10 → 1, <5 → 0 amount_csr_score (csr_by_amount_pct):   ≥95% → 3, 90-95% → 2, 85-90% → 1, <85% → 0 total = solvency + longevity + amount_csr, capped at 10.  ## WEIGHTS (sum to 100)  Criterion                | Base | YoungSingle | FamilyBreadwinner | HNI | PreRetirement | Smoker -------------------------|------|-------------|-------------------|-----|---------------|-------- claim_settlement         | 30   | 25          | 35                | 25  | 35            | 35 premium_competitive      | 20   | 30          | 20                | 5   | 15            | 25 max_sum_assured          | 10   | 10          | 15                | 30  | 5             | 5 age_range                | 5    | 0           | 5                 | 5   | 20            | 5 riders                   | 15   | 10          | 15                | 15  | 10            | 15 premium_flexibility      | 10   | 15          | 5                 | 10  | 10            | 5 solvency_trust           | 10   | 10          | 5                 | 10  | 5             | 10  ## PROFILE SELECTION LOGIC (choose first match) if tobacco_user == true → use \"Smoker\" else if desired_sum_assured_crore >= 10 or annual_income_lakhs == \">50\" → use \"HNI\" else if age >= 45 and planning_retirement == true → use \"PreRetirement\" else if marital_status == \"married\" and dependents_count ≥ 1 → use \"FamilyBreadwinner\" else if age <= 30 and dependents_count == 0 → use \"YoungSingle\" else → use \"Base\"  ## HARD FILTERS (drop policy if any fails) - If desired_sum_assured_crore > max_sum_assured_crore → drop - If user.age > max_entry_age → drop - If user.age + desired_policy_term_years > max_maturity_age → drop - If tobacco_user == true and policy has no smoker discount/loading (assume allowed, but smoker profile uses different weight) - If want_rop == true and return_of_premium != \"Y\" → drop - If want_critical_illness == true and critical_illness_rider != \"Y\" → drop  ## POLICY ATTRIBUTES TABLE (simplified – key columns only) Columns: insurer | product | max_entry_age | max_maturity_age | max_sum_assured_crore | benchmark_premium_30m_ns_1cr_30y | critical_illness_rider | accidental_death_rider | waiver_of_premium | permanent_disability_rider | terminal_illness_inbuilt | step_up_option | premium_break | regular_pay | limited_pay | single_pay | return_of_premium  HDFC Life | Click 2 Protect Super | 84 | 85 | 200 | 9800 | N | N | N | N | Y | Y | N | Y | Y | Y | N HDFC Life | Click 2 Protect Life | 65 | 75 | 100 | 7900 | Y | N | N | N | Y | N | N | Y | Y | Y | N HDFC Life | Click 2 Protect Supreme | 65 | 85 | 100 | 9500 | Y | Y | Y | Y | Y | N | N | Y | Y | Y | N HDFC Life | Click 2 Protect Supreme Plus | 65 | 85 | 100 | 10500 | Y | Y | Y | Y | Y | N | N | Y | Y | Y | Y ICICI Prudential | iProtect Smart | 65 | 99 | 100 | 9500 | Y | Y | N | Y | Y | N | N | Y | Y | Y | N ICICI Prudential | iProtect Smart Plus | 65 | 85 | 100 | 9700 | N | Y | N | N | Y | Y | Y | Y | Y | Y | N ICICI Prudential | iProtect Smart Return of Premium | 65 | 75 | 50 | 18000 | N | N | N | N | Y | N | N | Y | Y | Y | Y Max Life | Smart Secure Plus | 65 | 85 | 100 | 9200 | Y | Y | Y | N | Y | Y | N | Y | Y | Y | Y Max Life | Smart Total Elite Protection | 65 | 99 | 200 | 11500 | Y | Y | N | N | Y | Y | N | Y | Y | Y | N Max Life | Smart Term Plan Plus | 65 | 85 | 100 | 9000 | Y | Y | Y | N | Y | Y | N | Y | Y | Y | Y Tata AIA | Sampoorna Raksha Supreme | 65 | 100 | 100 | 9800 | Y | Y | Y | Y | Y | N | N | Y | Y | Y | N Bajaj Allianz Life | Smart Protect Goal | 65 | 85 | 100 | 9600 | Y | Y | Y | Y | Y | N | N | Y | Y | Y | Y Aditya Birla Sun Life | DigiShield Plan | 65 | 99 | 100 | 9500 | Y | Y | Y | Y | Y | N | N | Y | Y | Y | Y Kotak Life | e-Term Plan | 65 | 85 | 100 | 9400 | Y | Y | Y | Y | Y | Y | N | Y | Y | Y | N PNB MetLife | Mera Term Plan Plus | 65 | 85 | 100 | 9700 | Y | Y | N | Y | Y | N | N | Y | Y | Y | Y LIC | New Tech-Term | 65 | 80 | 5 | 11500 | N | N | N | N | Y | N | N | Y | Y | Y | N LIC | Yuva Term | 45 | 75 | 5 | 8500 | N | N | N | N | Y | N | N | Y | Y | Y | N SBI Life | eShield Next | 65 | 80 | 100 | 9400 | Y | Y | N | N | Y | Y | N | Y | Y | Y | N  (Note: “regular_pay”, “limited_pay”, “single_pay”, “return_of_premium” are Y/N based on policy_attributes.)  ## MARKET STATS TABLE Columns: insurer | csr_by_count_pct | csr_by_amount_pct | solvency_ratio | years_in_india  HDFC Life | 99.5 | 98.65 | 1.87 | 25 ICICI Prudential | 99.17 | 97.45 | 2.04 | 25 Max Life | 99.65 | 98.74 | 1.92 | 25 LIC | 98.62 | 98.21 | 1.98 | 69 Tata AIA | 99.13 | 98.53 | 1.93 | 24 Bajaj Allianz Life | 99.04 | 97.10 | 4.49 | 24 Aditya Birla Sun Life | 98.10 | 96.50 | 1.86 | 24 Kotak Life | 98.82 | 97.42 | 2.69 | 24 PNB MetLife | 97.55 | 96.20 | 1.93 | 24 SBI Life | 98.39 | 97.12 | 2.21 | 24 Canara HSBC Life | 98.95 | 97.65 | 3.49 | 17 HSBC Life | 97.50 | 96.10 | 1.95 | 17 Bandhan Life | 99.66 | 97.95 | 1.85 | 17  ## FINAL SCORES quality = Σ(weight x criterion_score) / 10   (0-100) value   = quality / (annual_premium_in_thousands)   (use benchmark_premium if user premium not known)  ## NOTES - Always apply hard filters before scoring. - For missing attributes (e.g., rider not listed) assume N. - Premium competitiveness uses the benchmark premium column – do not invent. - Output only top 5 policies with their quality scores.",
+          "const": false,
+          "internal": false
+        }
+      },
+      "position": {
+        "x": 328.30960678297356,
+        "y": 978.6265860179766,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}

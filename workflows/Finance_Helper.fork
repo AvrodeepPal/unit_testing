@@ -1,0 +1,362 @@
+{
+  "version": "1.0.0",
+  "metadata": {
+    "name": "Workflow",
+    "description": "",
+    "author": "anonymous",
+    "created_at": "2026-07-21T12:40:14.368Z",
+    "modified_at": "2026-07-21T12:40:14.368Z",
+    "forked_from": null,
+    "fork_count": 0,
+    "tags": []
+  },
+  "nodes": [
+    {
+      "id": "hn7aqw0tn",
+      "node_id": "node-finance-help-1d869b3a",
+      "version_tag": "v1",
+      "title": "Finance Help",
+      "description": {
+        "text": {
+          "text": {
+            "text": {
+              "text": {
+                "text": "Retrieves relevant bank report excerpts and builds a structured analysis prompt based on query and analysis type.\n\nThis node prepares a prompt for a financial analyst LLM by combining a user query, a selected analysis type, and relevant content from a vector database of bank annual reports. It first validates the inputs (query and system prompt) and normalizes the analysis type to one of twelve allowed values (e.g., summary, profitability, risk, valuation). Using a predefined retrieval strategy map, it constructs a query that merges the analysis‑specific keywords with the user’s question, then calls the bank_reports.query() method to retrieve up to twelve text chunks. The node also provides a task instruction tailored to the analysis type (e.g., “Analyse earnings quality, margins, return ratios…” for profitability). Finally, it assembles a detailed prompt that includes the retrieved financial context, the task instruction, the user’s question, and ten mandatory rules emphasizing data‑driven answers, metric awareness, and avoidance of invention or speculation. The output is a ready‑to‑use prompt for an LLM to generate a professional, institutional‑grade financial analysis.",
+                "lineHeight": 14,
+                "fontSize": 11,
+                "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+              },
+              "lineHeight": 14,
+              "fontSize": 11,
+              "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+            },
+            "lineHeight": 14,
+            "fontSize": 11,
+            "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+          },
+          "lineHeight": 14,
+          "fontSize": 11,
+          "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+        },
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-finance-help-1d869b3a",
+        "name": "Finance Help",
+        "description": "Retrieves relevant bank report excerpts and builds a structured analysis prompt based on query and analysis type.\n\nThis node prepares a prompt for a financial analyst LLM by combining a user query, a selected analysis type, and relevant content from a vector database of bank annual reports. It first validates the inputs (query and system prompt) and normalizes the analysis type to one of twelve allowed values (e.g., summary, profitability, risk, valuation). Using a predefined retrieval strategy map, it constructs a query that merges the analysis‑specific keywords with the user’s question, then calls the bank_reports.query() method to retrieve up to twelve text chunks. The node also provides a task instruction tailored to the analysis type (e.g., “Analyse earnings quality, margins, return ratios…” for profitability). Finally, it assembles a detailed prompt that includes the retrieved financial context, the task instruction, the user’s question, and ten mandatory rules emphasizing data‑driven answers, metric awareness, and avoidance of invention or speculation. The output is a ready‑to‑use prompt for an LLM to generate a professional, institutional‑grade financial analysis.",
+        "category": "llm",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-05-01 17:11:01.121130"
+      },
+      "constraints": [],
+      "position": {
+        "x": 280.2537967976092,
+        "y": 82.69394991477157,
+        "width": 320,
+        "height": 385,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "query",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "analysis_type",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "dropdown",
+            "widgetSource": "manual",
+            "options": [
+              "summary",
+              "comparative",
+              "profitability",
+              "balance_sheet",
+              "risk",
+              "liquidity",
+              "segment_analysis",
+              "strategy",
+              "outlook",
+              "valuation",
+              "trends",
+              "investor_notes"
+            ],
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "bank_reports",
+            "type": [
+              "vectordb"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "prompt",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "eyb4ipi2c",
+      "node_id": "node-context-generator-(llama)-0eb353fd",
+      "version_tag": "v1",
+      "title": "Text Generate (Llama)",
+      "description": {
+        "text": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "lineHeight": 14,
+        "fontSize": 11,
+        "fontFamily": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, sans-serif"
+      },
+      "metadata": {
+        "node_id": "node-context-generator-(llama)-0eb353fd",
+        "name": "Text Generate (Llama)",
+        "description": "This node performs autoregressive text generation using a preloaded LLaMA-based language model, producing a continuation or response from a given prompt. The model and tokenizer are already loaded by the wrapper, so the node focuses on input preparation and controlled generation.\n\nThe prompt is first tokenized and moved to the same device as the model (typically GPU). The node then invokes the model’s generate function with configurable parameters such as max_new_tokens (output length), temperature (controls randomness), top_p (nucleus sampling), and do_sample (enables probabilistic generation). The pad_token_id is set to ensure proper sequence termination.\n\nAfter generation, the output tokens are decoded into readable text with special tokens removed. The final result is a clean string representing the model’s generated continuation, suitable for chat, completion, or downstream processing.",
+        "category": "llm_llama",
+        "owner_id": "105973339426953711978",
+        "visibility": "public",
+        "organization_id": 1,
+        "edge_node": false,
+        "live_version": "v1",
+        "created_at": "2026-07-16 15:48:10.251968"
+      },
+      "constraints": [],
+      "position": {
+        "x": 652.3076012319378,
+        "y": 81.13177518818165,
+        "width": 320,
+        "height": 365,
+        "isCollapsed": false,
+        "expandedHeight": 60,
+        "collapsedHeight": 40
+      },
+      "ui_state": {
+        "isCollapsed": false,
+        "custom_width": null,
+        "custom_height": null
+      },
+      "ports": {
+        "inputs": [
+          {
+            "port_index": 0,
+            "name": "model",
+            "type": [
+              "llama::model_weights"
+            ],
+            "value": "Llama-3.1-8B-Instruct",
+            "modelMetadata": {
+              "displayName": "Llama-3.1-8B-Instruct",
+              "id": 42
+            },
+            "widgetType": "dropdown",
+            "widgetSource": "saved",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 1,
+            "name": "user_prompt",
+            "type": [
+              "string"
+            ],
+            "value": null,
+            "modelMetadata": null,
+            "widgetType": "textarea",
+            "connected": true,
+            "editable_at_runtime": false,
+            "advanced": false
+          },
+          {
+            "port_index": 2,
+            "name": "system_prompt",
+            "type": [
+              "string"
+            ],
+            "value": "\"You are a helpful assistant.\"",
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 3,
+            "name": "max_new_tokens",
+            "type": [
+              "integer"
+            ],
+            "value": 1024,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 4,
+            "name": "temperature",
+            "type": [
+              "number"
+            ],
+            "value": 0.7,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 5,
+            "name": "top_p",
+            "type": [
+              "number"
+            ],
+            "value": 0.9,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          },
+          {
+            "port_index": 6,
+            "name": "do_sample",
+            "type": [
+              "boolean"
+            ],
+            "value": true,
+            "modelMetadata": null,
+            "widgetType": "manual",
+            "connected": false,
+            "editable_at_runtime": false,
+            "advanced": true
+          }
+        ],
+        "outputs": [
+          {
+            "port_index": 0,
+            "name": "output",
+            "type": [
+              "string"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "jpmva3wwu",
+      "source": {
+        "node_id": "d7b2a6cb-fb33-4597-9306-e3258d1323a5",
+        "port_index": 0,
+        "type": "variable"
+      },
+      "target": {
+        "node_id": "hn7aqw0tn",
+        "port_index": 2,
+        "type": "node"
+      },
+      "icons": []
+    },
+    {
+      "id": "d7mksplgo",
+      "source": {
+        "node_id": "hn7aqw0tn",
+        "port_index": 0,
+        "type": "node"
+      },
+      "target": {
+        "node_id": "eyb4ipi2c",
+        "port_index": 1,
+        "type": "node"
+      },
+      "icons": []
+    }
+  ],
+  "display_widgets": [
+    {
+      "id": "nflt47rq8",
+      "node_id": "eyb4ipi2c",
+      "port_name": "output",
+      "position": {
+        "x": 1009.637193981283,
+        "y": 73.27881781447701,
+        "width": 639,
+        "height": 680,
+        "isCollapsed": false,
+        "expandedHeight": 680,
+        "collapsedHeight": 40
+      },
+      "data": null
+    }
+  ],
+  "variables": [
+    {
+      "id": "d7b2a6cb-fb33-4597-9306-e3258d1323a5",
+      "name": "hsbc_annual_reports",
+      "resourceType": "vectordb",
+      "description": "",
+      "components": {
+        "375ef0b7": {
+          "key": "375ef0b7",
+          "type": "vectordb",
+          "value": "d7b2a6cb-fb33-4597-9306-e3258d1323a5",
+          "const": true,
+          "internal": true
+        }
+      },
+      "position": {
+        "x": 460.03575368400016,
+        "y": 511.5272781618419,
+        "width": 200,
+        "height": 58,
+        "isCollapsed": false,
+        "expandedHeight": 58,
+        "collapsedHeight": 40
+      }
+    }
+  ],
+  "input_widgets": []
+}
